@@ -326,6 +326,18 @@
             user-select: none;
         }
 
+        .clock-distance-chip {
+            padding: 2px 10px;
+            border-radius: 9999px;
+            background: rgba(255, 240, 246, 0.95);
+            color: var(--berry-700);
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 12px;
+            border: 1px solid rgba(249, 168, 212, 0.55);
+            white-space: nowrap;
+        }
+
         .btn-map-toggle {
             display: inline-flex;
             align-items: center;
@@ -818,80 +830,6 @@
             transform: scale(0.97);
         }
 
-        /* Hộp kết quả chia sẻ link */
-        .share-panel {
-            margin-top: 22px;
-            padding-top: 18px;
-            border-top: 1px solid rgba(255, 209, 230, 0.9);
-        }
-
-        .share-box {
-            border-radius: 22px;
-            background: rgba(255, 240, 246, 0.92);
-            border: 1.5px solid var(--blush-300);
-            padding: 16px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .share-box-head {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            gap: 8px;
-        }
-
-        .share-box-title {
-            margin: 0;
-            font-family: var(--font-display);
-            font-weight: 700;
-            font-size: 16px;
-            color: var(--berry-700);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .copied-pill {
-            font-size: 11.5px;
-            font-weight: 600;
-            padding: 3px 10px;
-            border-radius: 9999px;
-            background: #ffffff;
-            color: var(--berry-600);
-            border: 1px solid var(--blush-300);
-        }
-
-        .share-url-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .share-url-input {
-            flex: 1 1 220px;
-            min-width: 0;
-            padding: 10px 14px;
-            border-radius: 14px;
-            background: #ffffff;
-            border: 1.5px solid var(--blush-300);
-            font-size: 12.5px;
-            color: var(--ink-soft);
-            font-weight: 500;
-        }
-        .share-url-input:focus {
-            outline: none;
-            border-color: var(--berry-400);
-        }
-
-        .share-btn-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
         .btn-small-berry {
             display: inline-flex;
             align-items: center;
@@ -937,6 +875,124 @@
             transform: scale(0.96);
         }
 
+        /* ========================================================================= */
+        /* 5B. HỘP THOẠI MODAL XÁC NHẬN LINK & THẺ BÁO LINK BỊ CẮT ĐỨT               */
+        /* ========================================================================= */
+        .share-modal-backdrop {
+            position: fixed;
+            inset: 0;
+            z-index: 55;
+            background: rgba(74, 29, 52, 0.38);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            animation: fadeInModal 0.25s ease forwards;
+        }
+
+        @keyframes fadeInModal {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .share-modal-card {
+            width: 100%;
+            max-width: 500px;
+            background: linear-gradient(165deg, #ffffff 0%, #fff4f9 100%);
+            border: 1.5px solid #ffffff;
+            border-radius: 28px;
+            box-shadow: 0 28px 65px -16px rgba(190, 24, 93, 0.36), 0 0 0 6px rgba(255, 255, 255, 0.35);
+            padding: 24px 22px 22px;
+            position: relative;
+            animation: fadePopUp 0.32s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            width: 34px;
+            height: 34px;
+            border-radius: 9999px;
+            background: rgba(255, 228, 239, 0.9);
+            color: var(--berry-700);
+            font-size: 18px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s ease, transform 0.18s ease;
+        }
+        .modal-close-btn:hover {
+            background: var(--blush-300);
+            transform: scale(1.06);
+        }
+
+        .modal-header-block {
+            padding-right: 36px;
+        }
+
+        .share-box-title {
+            margin: 0;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 18px;
+            color: var(--berry-700);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .modal-meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 8px;
+        }
+
+        .copied-pill {
+            font-size: 11.5px;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 9999px;
+            background: #ffffff;
+            color: var(--berry-600);
+            border: 1px solid var(--blush-300);
+        }
+
+        .share-url-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .share-url-input {
+            flex: 1 1 220px;
+            min-width: 0;
+            padding: 11px 14px;
+            border-radius: 14px;
+            background: #ffffff;
+            border: 1.5px solid var(--blush-300);
+            font-size: 12.5px;
+            color: var(--ink-soft);
+            font-weight: 500;
+        }
+        .share-url-input:focus {
+            outline: none;
+            border-color: var(--berry-400);
+        }
+
+        .modal-action-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
         .share-hint {
             margin: 0;
             font-size: 12.5px;
@@ -947,11 +1003,38 @@
         .local-deploy-note {
             padding: 10px 13px;
             border-radius: 14px;
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 240, 246, 0.9);
             border: 1px dashed rgba(219, 39, 119, 0.42);
             font-size: 12px;
             color: var(--berry-700);
             line-height: 1.55;
+        }
+
+        .broken-link-card {
+            text-align: center;
+            padding: 34px 24px;
+        }
+
+        .broken-link-icon {
+            font-size: 46px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .broken-link-title {
+            margin: 0 0 10px;
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 24px;
+            color: var(--berry-600);
+        }
+
+        .broken-link-desc {
+            margin: 0 auto 22px;
+            max-width: 460px;
+            font-size: 14.5px;
+            line-height: 1.65;
+            color: var(--ink-soft);
         }
 
         /* ========================================================================= */
@@ -1510,6 +1593,8 @@
                 <span id="clockNice" class="clock-time">--:--:--</span>
             </div>
 
+            <span class="clock-distance-chip">✈ 9.480 km</span>
+
             <button type="button" id="toggleMapInspectBtn" class="btn-map-toggle">
                 <span id="toggleMapIcon">🗺️</span>
                 <span id="toggleMapText">Ngắm bản đồ</span>
@@ -1642,42 +1727,6 @@
                         </button>
                     </div>
                 </form>
-
-                <!-- Hộp hiển thị link sau khi tạo -->
-                <div id="shareResultPanel" class="hidden share-panel animate-reveal">
-                    <div class="share-box">
-                        <div class="share-box-head">
-                            <p id="shareBoxTitle" class="share-box-title">
-                                <span>🎀</span>
-                                <span>Link phong thư đã sẵn sàng!</span>
-                            </p>
-                            <span id="copiedStatusBadge" class="copied-pill">Đã sao chép ✓</span>
-                        </div>
-
-                        <div class="share-url-row">
-                            <input id="shareUrlOutput" class="share-url-input" type="text" readonly
-                                   aria-label="Đường dẫn bức thư để gửi cho người ấy">
-                        </div>
-
-                        <div class="share-btn-group">
-                            <button type="button" id="copyLinkAgainBtn" class="btn-small-berry">
-                                <span>📋</span>
-                                <span>Sao chép link</span>
-                            </button>
-                            <button type="button" id="openGeneratedLinkBtn" class="btn-small-outline">
-                                <span>💌</span>
-                                <span>Mở thử link ngay</span>
-                            </button>
-                        </div>
-
-                        <p id="shareHintText" class="share-hint"></p>
-
-                        <!-- Ghi chú thân thiện khi đang mở dưới dạng file:// hoặc sandbox preview -->
-                        <div id="localDeployNote" class="hidden local-deploy-note">
-                            💡 <strong>Mẹo nhỏ để gửi qua Messenger/Zalo:</strong> Hiện bạn đang mở trang dưới dạng tệp nội bộ hoặc khung xem trước. Chỉ cần tải tệp HTML này lên <strong>Netlify Drop</strong>, <strong>GitHub Pages</strong> hoặc <strong>Vercel</strong> (miễn phí 100%), đường link tạo ra sẽ tự động mang tên miền thật để người ấy bấm vào đọc và viết thư ngược lại cho bạn ngay trên điện thoại!
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
 
@@ -1811,7 +1860,73 @@
                 </div>
             </div>
         </section>
+
+        <!-- ===================================================== -->
+        <!-- CHẾ ĐỘ 3: THÔNG BÁO KHI LINK THƯ BỊ CẮT ĐỨT / HỎNG    -->
+        <!-- ===================================================== -->
+        <section id="brokenLinkSection" class="hidden section-shell animate-reveal">
+            <div class="glass-card broken-link-card">
+                <span class="broken-link-icon" aria-hidden="true">💌</span>
+                <h2 class="broken-link-title">Ôi, đường link bức thư bị thiếu một đoạn rồi!</h2>
+                <p class="broken-link-desc">
+                    Có vẻ đường link vừa mở bị cắt đứt giữa chừng khi sao chép hoặc gửi tin nhắn nên phong bì chưa thể mở ra được. Bạn hãy quay lại tin nhắn, sao chép trọn vẹn toàn bộ đường link rồi mở lại nhé!
+                </p>
+                <div class="action-row">
+                    <button type="button" id="retryBrokenLinkBtn" class="btn-secondary">
+                        <span>🔄</span>
+                        <span>Thử tải lại link</span>
+                    </button>
+                    <button type="button" id="writeNewFromBrokenBtn" class="btn-primary">
+                        <span>✍️</span>
+                        <span>Viết một lá thư mới</span>
+                    </button>
+                </div>
+            </div>
+        </section>
     </main>
+
+    <!-- ========================================================================= -->
+    <!-- HỘP THOẠI MODAL XÁC NHẬN SAU KHI TẠO LINK THƯ                             -->
+    <!-- ========================================================================= -->
+    <div id="shareModalBackdrop" class="hidden share-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="shareBoxTitle">
+        <div class="share-modal-card">
+            <button type="button" id="closeShareModalBtn" class="modal-close-btn" aria-label="Đóng hộp thoại">×</button>
+
+            <div class="modal-header-block">
+                <p id="shareBoxTitle" class="share-box-title">
+                    <span>🎀</span>
+                    <span>Link phong thư đã sẵn sàng!</span>
+                </p>
+                <div class="modal-meta-badges">
+                    <span id="copiedStatusBadge" class="copied-pill">Đã sao chép ✓</span>
+                    <span id="linkCompactBadge" class="copied-pill">Đã nén gọn</span>
+                </div>
+            </div>
+
+            <div class="share-url-row">
+                <input id="shareUrlOutput" class="share-url-input" type="text" readonly
+                       aria-label="Đường dẫn bức thư để gửi cho người ấy">
+            </div>
+
+            <div class="modal-action-stack">
+                <button type="button" id="copyLinkAgainBtn" class="btn-primary" style="width: 100%;">
+                    <span>📋</span>
+                    <span>Sao chép link</span>
+                </button>
+                <button type="button" id="openGeneratedLinkBtn" class="btn-secondary" style="width: 100%;">
+                    <span>💌</span>
+                    <span>Mở thử phong bì</span>
+                </button>
+            </div>
+
+            <p id="shareHintText" class="share-hint"></p>
+
+            <!-- Ghi chú thân thiện khi đang mở dưới dạng file:// hoặc sandbox preview -->
+            <div id="localDeployNote" class="hidden local-deploy-note">
+                💡 <strong>Mẹo nhỏ để gửi qua Messenger/Zalo:</strong> Hiện bạn đang mở trang dưới dạng tệp nội bộ hoặc khung xem trước. Khi cập nhật tệp này lên <strong>GitHub Pages</strong>, link tạo ra sẽ tự động dùng tên miền web thật để người ấy bấm vào mở phong bì ngay!
+            </div>
+        </div>
+    </div>
 
     <!-- Hộp thông báo Toast (không dùng alert/confirm) -->
     <div id="toastStack" class="toast-stack" aria-live="polite"></div>
@@ -2342,20 +2457,18 @@
             }
 
             /**
-             * HÀM DÙNG CHUNG GỬI CÁI ÔM 2 CHIỀU TRÊN BẢN ĐỒ: sendHug(direction, options)
-             * - direction: 'hn2nice' (Hà Nội -> Nice: t chạy từ 1 về 0)
-             *           hoặc 'nice2hn' (Nice -> Hà Nội: t chạy từ 0 lên 1)
+             * Gửi cái ôm 2 chiều dọc đường cung bản đồ:
+             * - 'hn2nice': Hà Nội -> Nice (t chạy từ 1 về 0)
+             * - 'nice2hn': Nice -> Hà Nội (t chạy từ 0 lên 1)
              */
             function sendHug(direction, options = {}) {
                 const dir = direction === 'hn2nice' ? 'hn2nice' : 'nice2hn';
                 const { originX, originY, fadeCard = true } = options;
 
-                // Bắn pháo tim vui mắt tại vị trí nút vừa bấm (nếu có)
                 if (typeof originX === 'number' && typeof originY === 'number') {
                     spawnHeartBurst(originX, originY, 18);
                 }
 
-                // Tạm làm mờ nhẹ thẻ thư trong ~2.45 giây để nhìn rõ trái tim bay vượt 9.480 km trên bản đồ
                 if (fadeCard && !isMapInspecting) {
                     document.body.classList.add('hug-watching-mode');
                     clearTimeout(hugWatchTimer);
@@ -2364,7 +2477,6 @@
                     }, 2450);
                 }
 
-                // Thông báo ngọt ngào lúc xuất phát
                 if (dir === 'hn2nice') {
                     showToast('Một cái ôm ấm áp từ Hà Nội đang bay 9.480 km sang Nice cho Quỳnh Thư 💗');
                 } else {
@@ -2377,7 +2489,7 @@
                 const heartColors = ['#be185d', '#db2777', '#ec4899', '#f472b6', '#fb7185'];
                 const sparkleColors = ['#ffffff', '#fbcfe8', '#f9a8d4', '#fda4af'];
 
-                // 1. Tạo chuỗi 26 trái tim phát sáng bay nối đuôi theo đúng chiều
+                // Chuỗi 26 trái tim phát sáng bay nối đuôi theo đúng chiều
                 for (let i = 0; i < 26; i++) {
                     effectParticles.push({
                         kind: 'routeHeart',
@@ -2391,7 +2503,7 @@
                     });
                 }
 
-                // 2. Tạo vệt sáng lấp lánh (sparkle trail) chạy bám theo đường bay
+                // Vệt sáng lấp lánh bám theo đường bay
                 for (let j = 0; j < 34; j++) {
                     effectParticles.push({
                         kind: 'routeSparkle',
@@ -2405,7 +2517,7 @@
                     });
                 }
 
-                // 3. Khi chuỗi trái tim hạ cánh tại đích -> bật ripple SVG + nhịp ghim + pháo tim rực rỡ
+                // Khi trái tim chạm đích -> sóng lan tỏa SVG + nhịp ghim + pháo tim
                 const targetSvgX = dir === 'hn2nice' ? routeGeom.nx : routeGeom.hx;
                 const targetSvgY = dir === 'hn2nice' ? routeGeom.ny : routeGeom.hy;
                 const targetPinId = dir === 'hn2nice' ? 'mapNicePin' : 'mapHanoiPin';
@@ -2456,7 +2568,7 @@
                     ctx.restore();
                 }
 
-                // Vẽ hạt hiệu ứng pháo tim & trái tim bay dọc tuyến bản đồ 2 chiều
+                // Vẽ hạt pháo tim & trái tim bay dọc bản đồ 2 chiều
                 for (let i = effectParticles.length - 1; i >= 0; i--) {
                     const pt = effectParticles[i];
 
@@ -2492,7 +2604,6 @@
                             ? 2 * progress * progress
                             : 1 - Math.pow(-2 * progress + 2, 2) / 2;
 
-                        // Nice -> Hà Nội: t đi từ 0 -> 1 | Hà Nội -> Nice: t đi từ 1 -> 0
                         const t = pt.dir === 'hn2nice' ? (1 - eased) : eased;
                         const svgPt = sampleRoutePointSvg(t);
                         const screenPt = svgPointToScreen(svgPt.x, svgPt.y);
@@ -2583,17 +2694,20 @@
             }
 
             // =========================================================================
-            // 5. TOAST, CLIPBOARD, MÃ HÓA UTF-8 BASE64 URL-SAFE & TRẠNG THÁI 2 CHIỀU
+            // 5. TOAST, CLIPBOARD & MÃ HÓA/GIẢI MÃ NÉN GỌN (DEFLATE-RAW + FALLBACK)
             // =========================================================================
             const DRAFT_PREFIX = 'hl_qt_2way_draft_v3_';
             let currentComposeDir = 'hn2nice';
             let pendingReplyTo = '';
             let activeReaderLetter = null;
+            let isPreviewMode = false;
             let lastGeneratedLetter = null;
+            let lastGeneratedToken = '';
             let readerHugCount = 0;
 
             const writerSection = document.getElementById('writerSection');
             const readerSection = document.getElementById('readerSection');
+            const brokenLinkSection = document.getElementById('brokenLinkSection');
             const sealedEnvelopeView = document.getElementById('sealedEnvelopeView');
             const openedLetterView = document.getElementById('openedLetterView');
             const interactiveEnvelope = document.getElementById('interactiveEnvelope');
@@ -2609,10 +2723,11 @@
             const replyContextBadge = document.getElementById('replyContextBadge');
             const replyContextTitle = document.getElementById('replyContextTitle');
 
-            const shareResultPanel = document.getElementById('shareResultPanel');
+            const shareModalBackdrop = document.getElementById('shareModalBackdrop');
             const shareUrlOutput = document.getElementById('shareUrlOutput');
             const shareBoxTitle = document.getElementById('shareBoxTitle');
             const copiedStatusBadge = document.getElementById('copiedStatusBadge');
+            const linkCompactBadge = document.getElementById('linkCompactBadge');
             const shareHintText = document.getElementById('shareHintText');
             const localDeployNote = document.getElementById('localDeployNote');
 
@@ -2622,7 +2737,6 @@
 
             function showToast(message) {
                 const stack = document.getElementById('toastStack');
-                // Giới hạn tối đa 2 toast cùng lúc để không che màn hình
                 while (stack.children.length >= 2) {
                     stack.firstElementChild.remove();
                 }
@@ -2639,38 +2753,38 @@
             }
 
             /**
-             * Sao chép vào clipboard bằng execCommand (tương thích tốt iFrame & mobile) kèm fallback
+             * Sao chép an toàn qua execCommand (tương thích iFrame & Messenger/Zalo WebView) kèm fallback clipboard API
              */
-            function copyTextSafely(text) {
-                return new Promise((resolve) => {
-                    let ok = false;
-                    try {
-                        const ta = document.createElement('textarea');
-                        ta.value = text;
-                        ta.setAttribute('readonly', '');
-                        ta.style.position = 'fixed';
-                        ta.style.top = '-9999px';
-                        ta.style.left = '-9999px';
-                        document.body.appendChild(ta);
-                        ta.focus();
-                        ta.select();
-                        ta.setSelectionRange(0, ta.value.length);
-                        ok = document.execCommand('copy');
-                        document.body.removeChild(ta);
-                    } catch (err) {
-                        ok = false;
-                    }
+            async function copyTextSafely(text) {
+                let ok = false;
+                try {
+                    const ta = document.createElement('textarea');
+                    ta.value = text;
+                    ta.setAttribute('readonly', '');
+                    ta.style.position = 'fixed';
+                    ta.style.top = '-9999px';
+                    ta.style.left = '-9999px';
+                    document.body.appendChild(ta);
+                    ta.focus();
+                    ta.select();
+                    ta.setSelectionRange(0, ta.value.length);
+                    ok = document.execCommand('copy');
+                    document.body.removeChild(ta);
+                } catch (err) {
+                    ok = false;
+                }
 
-                    if (ok) {
-                        resolve(true);
-                        return;
+                if (ok) return true;
+
+                if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+                    try {
+                        await navigator.clipboard.writeText(text);
+                        return true;
+                    } catch (err) {
+                        return false;
                     }
-                    if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
-                        navigator.clipboard.writeText(text).then(() => resolve(true)).catch(() => resolve(false));
-                    } else {
-                        resolve(false);
-                    }
-                });
+                }
+                return false;
             }
 
             function formatLetterDate(dirCode) {
@@ -2679,7 +2793,62 @@
                 return `${meta.senderCity}, ngày ${now.getDate()} tháng ${now.getMonth() + 1} năm ${now.getFullYear()}`;
             }
 
-            function encodeLetterToToken(letterObj) {
+            /**
+             * Chuyển đổi Uint8Array <-> Base64URL an toàn cho đường dẫn
+             */
+            function bytesToBase64Url(bytes) {
+                let binary = '';
+                const chunkSize = 0x8000;
+                for (let i = 0; i < bytes.length; i += chunkSize) {
+                    binary += String.fromCharCode.apply(null, bytes.subarray(i, i + chunkSize));
+                }
+                return btoa(binary).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+            }
+
+            function base64UrlToBytes(str) {
+                let b64 = str.trim().replace(/-/g, '+').replace(/_/g, '/');
+                while (b64.length % 4 !== 0) b64 += '=';
+                const binary = atob(b64);
+                const bytes = new Uint8Array(binary.length);
+                for (let i = 0; i < binary.length; i++) {
+                    bytes[i] = binary.charCodeAt(i);
+                }
+                return bytes;
+            }
+
+            async function compressDeflateRaw(bytes) {
+                if (typeof CompressionStream !== 'function') return null;
+                try {
+                    const cs = new CompressionStream('deflate-raw');
+                    const writer = cs.writable.getWriter();
+                    writer.write(bytes);
+                    writer.close();
+                    const buf = await new Response(cs.readable).arrayBuffer();
+                    return new Uint8Array(buf);
+                } catch (err) {
+                    return null;
+                }
+            }
+
+            async function decompressDeflateRaw(bytes) {
+                if (typeof DecompressionStream !== 'function') return null;
+                try {
+                    const ds = new DecompressionStream('deflate-raw');
+                    const writer = ds.writable.getWriter();
+                    writer.write(bytes);
+                    writer.close();
+                    const buf = await new Response(ds.readable).arrayBuffer();
+                    return new Uint8Array(buf);
+                } catch (err) {
+                    return null;
+                }
+            }
+
+            /**
+             * Mã hóa bức thư: ưu tiên nén deflate-raw (tiền tố "z.") nếu gọn hơn,
+             * tự động fallback JSON UTF-8 Base64URL ("j.") để đảm bảo tương thích mọi trình duyệt.
+             */
+            async function encodeLetterToToken(letterObj) {
                 const payload = {
                     dir: letterObj.dir === 'nice2hn' ? 'nice2hn' : 'hn2nice',
                     t: letterObj.title || '',
@@ -2690,23 +2859,54 @@
                 if (letterObj.replyTo) {
                     payload.r = letterObj.replyTo;
                 }
-                const bytes = new TextEncoder().encode(JSON.stringify(payload));
-                let binary = '';
-                for (let i = 0; i < bytes.length; i++) {
-                    binary += String.fromCharCode(bytes[i]);
+
+                const rawBytes = new TextEncoder().encode(JSON.stringify(payload));
+                const plainToken = 'j.' + bytesToBase64Url(rawBytes);
+
+                const compressed = await compressDeflateRaw(rawBytes);
+                if (compressed && compressed.length < rawBytes.length) {
+                    return {
+                        token: 'z.' + bytesToBase64Url(compressed),
+                        compressed: true
+                    };
                 }
-                return btoa(binary).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+                return {
+                    token: plainToken,
+                    compressed: false
+                };
             }
 
-            function decodeTokenToLetter(token) {
-                if (!token || typeof token !== 'string') return null;
+            /**
+             * Giải mã token thư (hỗ trợ cả định dạng nén "z.", định dạng "j.", và định dạng cũ không tiền tố)
+             */
+            async function decodeTokenToLetter(rawToken) {
+                if (!rawToken || typeof rawToken !== 'string') return null;
                 try {
-                    let b64 = token.trim().replace(/-/g, '+').replace(/_/g, '/');
-                    while (b64.length % 4 !== 0) b64 += '=';
-                    const binary = atob(b64);
-                    const bytes = new Uint8Array(binary.length);
-                    for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
-                    const parsed = JSON.parse(new TextDecoder('utf-8').decode(bytes));
+                    // Làm sạch ký tự thừa nếu Messenger/Zalo/người dùng dính dấu câu hoặc tham số phụ
+                    let cleaned = rawToken.trim();
+                    try {
+                        cleaned = decodeURIComponent(cleaned);
+                    } catch (e) { /* Giữ nguyên nếu không phải chuỗi percent-encoded */ }
+                    cleaned = cleaned.split(/[&#?\s]/)[0].replace(/[^A-Za-z0-9\-_.]/g, '');
+
+                    if (!cleaned) return null;
+
+                    let jsonText = '';
+                    if (cleaned.startsWith('z.')) {
+                        const compressedBytes = base64UrlToBytes(cleaned.slice(2));
+                        const inflated = await decompressDeflateRaw(compressedBytes);
+                        if (!inflated) return null;
+                        jsonText = new TextDecoder('utf-8').decode(inflated);
+                    } else if (cleaned.startsWith('j.')) {
+                        const plainBytes = base64UrlToBytes(cleaned.slice(2));
+                        jsonText = new TextDecoder('utf-8').decode(plainBytes);
+                    } else {
+                        // Tương thích ngược với các link cũ không có tiền tố
+                        const legacyBytes = base64UrlToBytes(cleaned);
+                        jsonText = new TextDecoder('utf-8').decode(legacyBytes);
+                    }
+
+                    const parsed = JSON.parse(jsonText);
                     if (!parsed || (typeof parsed.b !== 'string' && typeof parsed.t !== 'string')) return null;
 
                     const dir = parsed.dir === 'nice2hn' ? 'nice2hn' : 'hn2nice';
@@ -2725,24 +2925,40 @@
                 }
             }
 
-            function getTokenFromUrl() {
+            /**
+             * Trích xuất tham số "thu" từ cả hash (#thu=...) lẫn query (?thu=...)
+             * và tự động loại bỏ các tham số theo dõi như fbclid do Messenger/Zalo chèn thêm.
+             */
+            function extractTokenFromUrl() {
                 try {
                     const hash = window.location.hash || '';
                     if (hash.length > 1) {
-                        const hp = new URLSearchParams(hash.slice(1));
-                        if (hp.get('thu')) return hp.get('thu');
+                        const hashContent = hash.slice(1);
+                        // Trường hợp hash chứa "?fbclid=..." gắn dính cuối chuỗi
+                        const normalizedHash = hashContent.replace(/\?/g, '&');
+                        const hp = new URLSearchParams(normalizedHash);
+                        if (hp.get('thu')) {
+                            return hp.get('thu');
+                        }
+                        const match = hashContent.match(/(?:^|[&?])thu=([^&?#\s]+)/i);
+                        if (match && match[1]) return match[1];
                     }
-                    const qp = new URLSearchParams(window.location.search || '');
-                    if (qp.get('thu')) return qp.get('thu');
+
+                    const search = window.location.search || '';
+                    if (search.length > 1) {
+                        const qp = new URLSearchParams(search);
+                        if (qp.get('thu')) {
+                            return qp.get('thu');
+                        }
+                    }
                 } catch (err) {
-                    console.warn('Lỗi đọc URL:', err);
+                    console.warn('Lỗi đọc tham số URL:', err);
                 }
                 return null;
             }
 
             /**
-             * Tạo đường dẫn chia sẻ dựa trên window.location.origin + window.location.pathname
-             * (hỗ trợ an toàn khi chạy cả trên web thật lẫn file nội bộ / sandbox)
+             * Tạo đường dẫn chia sẻ sạch sẽ (loại bỏ fbclid hoặc tham số rác cũ)
              */
             function buildShareUrl(token) {
                 const origin = window.location.origin;
@@ -2762,8 +2978,19 @@
                 return proto === 'file:' || proto === 'about:' || proto === 'blob:' || href.includes('srcdoc');
             }
 
+            function clearUrlHashSilently() {
+                try {
+                    const cleanUrl = window.location.pathname + (window.location.search ? '' : '');
+                    if (window.location.hash || window.location.search.includes('thu=')) {
+                        window.history.replaceState(null, '', cleanUrl || window.location.href.split('#')[0].split('?')[0]);
+                    }
+                } catch (err) {
+                    /* Bỏ qua nếu môi trường sandbox không cho replaceState */
+                }
+            }
+
             // =========================================================================
-            // 6. QUẢN LÝ BẢN NHÁP RIÊNG TỪNG CHIỀU & CẬP NHẬT GIAO DIỆN COMPOSER
+            // 6. QUẢN LÝ BẢN NHÁP RIÊNG TỪNG CHIỀU & GIAO DIỆN SOẠN THƯ
             // =========================================================================
             function updateWordCount() {
                 const txt = letterBodyInput.value.trim();
@@ -2812,28 +3039,21 @@
                 }
             }
 
-            /**
-             * Chuyển đổi chiều gửi thư & tự động cập nhật toàn bộ nhãn, gợi ý, chữ ký và bản nháp
-             */
-            function setComposeDirection(dirCode, options = {}) {
-                const { savePrevious = true, keepReplyContext = false } = options;
-                const nextDir = dirCode === 'nice2hn' ? 'nice2hn' : 'hn2nice';
-
-                if (savePrevious && currentComposeDir !== nextDir) {
+            function applyComposeDirection(dirCode, { savePrevious = true } = {}) {
+                if (savePrevious) {
                     saveDraftForDir(currentComposeDir);
                 }
+                currentComposeDir = dirCode === 'nice2hn' ? 'nice2hn' : 'hn2nice';
+                const meta = getDirMeta(currentComposeDir);
 
-                currentComposeDir = nextDir;
-                const meta = getDirMeta(nextDir);
-
-                // Cập nhật trạng thái nút Segmented Toggle
-                const isHn2Nice = nextDir === 'hn2nice';
+                // Cập nhật trạng thái nút chuyển chiều
+                const isHn2Nice = currentComposeDir === 'hn2nice';
                 dirBtnHn2Nice.classList.toggle('active', isHn2Nice);
                 dirBtnHn2Nice.setAttribute('aria-selected', String(isHn2Nice));
                 dirBtnNice2Hn.classList.toggle('active', !isHn2Nice);
                 dirBtnNice2Hn.setAttribute('aria-selected', String(!isHn2Nice));
 
-                // Cập nhật tiêu đề, mô tả, placeholder & chữ ký
+                // Cập nhật văn bản & placeholder theo chiều gửi
                 document.getElementById('composerHeading').textContent = meta.composerHeading;
                 document.getElementById('composerSubtitle').textContent = meta.composerSubtitle;
                 letterTitleInput.placeholder = meta.titlePlaceholder;
@@ -2842,13 +3062,8 @@
                 document.getElementById('composerSignPreview').textContent = `Ký tên: ${meta.senderName} (${meta.senderCity})`;
                 document.getElementById('generateLinkBtnText').textContent = meta.generateBtnLabel;
 
-                if (!keepReplyContext) {
-                    pendingReplyTo = '';
-                    renderReplyContextUI();
-                }
-
-                shareResultPanel.classList.add('hidden');
-                loadDraftForDir(nextDir);
+                loadDraftForDir(currentComposeDir);
+                renderReplyContextUI();
             }
 
             function collectLetterFromForm() {
@@ -2857,8 +3072,8 @@
                 const body = letterBodyInput.value.trim();
                 const ps = letterPsInput.value.trim();
 
-                if (!title && !body) {
-                    showToast(`Viết vài dòng yêu thương cho ${meta.receiverShort} trước đã nha 💌`);
+                if (!body && !title) {
+                    showToast('Viết vài dòng yêu thương trước khi gửi nhé 💗');
                     letterBodyInput.focus();
                     return null;
                 }
@@ -2874,327 +3089,387 @@
             }
 
             // =========================================================================
-            // 7. CHUYỂN ĐỔI GIỮA CHẾ ĐỘ SOẠN THƯ & CHẾ ĐỘ ĐỌC PHONG BÌ 3D
+            // 7. ĐIỀU HƯỚNG MÀN HÌNH: SOẠN THƯ / PHONG BÌ 3D / ĐỌC THƯ / LINK LỖI
             // =========================================================================
-            function showWriterMode() {
-                setMapInspectMode(false);
-                document.body.classList.remove('hug-watching-mode');
+            function showComposerView() {
                 writerSection.classList.remove('hidden');
                 readerSection.classList.add('hidden');
+                brokenLinkSection.classList.add('hidden');
+                closeShareModal();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }
 
-            function showReaderMode(letterData, modeType) {
-                setMapInspectMode(false);
-                document.body.classList.remove('hug-watching-mode');
-                activeReaderLetter = letterData;
+            function showBrokenLinkView() {
+                writerSection.classList.add('hidden');
+                readerSection.classList.add('hidden');
+                brokenLinkSection.classList.remove('hidden');
+                closeShareModal();
+            }
+
+            /**
+             * Chuyển thẳng sang màn hình PHONG BÌ 3D NIÊM PHONG cho bức thư đã nhận / xem trước
+             */
+            function showReaderSealedEnvelope(letterObj, { preview = false } = {}) {
+                activeReaderLetter = letterObj;
+                isPreviewMode = preview;
                 readerHugCount = 0;
 
-                const meta = getDirMeta(letterData.dir);
+                const meta = getDirMeta(letterObj.dir);
 
-                // Cập nhật mặt ngoài phong bì 3D theo chiều gửi
+                // Cập nhật thông tin phong bì 3D
                 document.getElementById('envelopeFlightBanner').textContent = meta.envelopeBanner;
-                document.getElementById('envelopePeekTitle').textContent = letterData.title;
+                document.getElementById('envelopePeekTitle').textContent = letterObj.title;
                 document.getElementById('envelopePeekRoute').textContent = meta.readerRoutePill;
                 document.getElementById('envelopeRouteLine').textContent = meta.envelopeRouteLine;
                 document.getElementById('envelopePeopleLine').innerHTML =
                     `<strong>${meta.senderName}</strong> gửi <strong>${meta.receiverName}</strong>`;
                 document.getElementById('waxSealText').textContent = meta.waxSeal;
 
-                // Cập nhật nội dung lá thư bên trong
-                document.getElementById('readerDateText').textContent = letterData.date;
+                // Cập nhật nội dung bên trong lá thư
+                document.getElementById('readerDateText').textContent = letterObj.date;
                 document.getElementById('readerRoutePill').textContent = meta.readerRoutePill;
 
-                const replyPill = document.getElementById('readerReplyPill');
-                if (letterData.replyTo) {
-                    document.getElementById('readerReplyTitle').textContent = letterData.replyTo;
-                    replyPill.classList.remove('hidden');
+                const readerReplyPill = document.getElementById('readerReplyPill');
+                if (letterObj.replyTo) {
+                    document.getElementById('readerReplyTitle').textContent = letterObj.replyTo;
+                    readerReplyPill.classList.remove('hidden');
                 } else {
-                    replyPill.classList.add('hidden');
+                    readerReplyPill.classList.add('hidden');
                 }
 
-                document.getElementById('readerTitleText').textContent = letterData.title;
-                document.getElementById('readerBodyText').textContent = letterData.body;
+                document.getElementById('readerTitleText').textContent = letterObj.title;
+                document.getElementById('readerBodyText').textContent = letterObj.body;
 
-                const psWrap = document.getElementById('readerPsContainer');
-                if (letterData.ps) {
-                    document.getElementById('readerPsText').textContent = letterData.ps;
-                    psWrap.classList.remove('hidden');
+                const psBox = document.getElementById('readerPsContainer');
+                if (letterObj.ps) {
+                    document.getElementById('readerPsText').textContent = letterObj.ps;
+                    psBox.classList.remove('hidden');
                 } else {
-                    psWrap.classList.add('hidden');
+                    psBox.classList.add('hidden');
                 }
 
                 document.getElementById('readerSignClosing').textContent = meta.closingLine;
                 document.getElementById('readerSignName').textContent = meta.senderName;
                 document.getElementById('readerSignPlace').textContent = meta.senderPlaceStamp;
-
-                // Cập nhật nút Gửi cái ôm & Viết thư hồi âm theo đúng chiều phản hồi
                 document.getElementById('readerSendHugText').textContent = meta.replyHugBtnText;
                 document.getElementById('writeReplyLetterText').textContent = meta.replyLetterBtnText;
-                hugCounterText.classList.add('hidden');
 
-                // Đặt lại trạng thái phong bì kín
+                hugCounterText.classList.add('hidden');
+                hugCounterText.textContent = '';
+
+                // Đặt lại trạng thái phong bì chưa mở
                 interactiveEnvelope.classList.remove('envelope-opening');
                 interactiveEnvelope.classList.add('animate-float-envelope');
                 sealedEnvelopeView.classList.remove('hidden');
                 openedLetterView.classList.add('hidden');
 
-                if (modeType === 'preview') {
-                    backFromEnvelopeBtn.classList.remove('hidden');
-                    previewControlsBar.classList.remove('hidden');
-                } else {
-                    backFromEnvelopeBtn.classList.add('hidden');
-                    previewControlsBar.classList.add('hidden');
-                }
+                // Hiện/ẩn nút điều khiển xem trước
+                backFromEnvelopeBtn.classList.toggle('hidden', !preview);
+                previewControlsBar.classList.toggle('hidden', !preview);
 
+                // Hiển thị khu vực Reader và ẩn Composer
                 writerSection.classList.add('hidden');
+                brokenLinkSection.classList.add('hidden');
                 readerSection.classList.remove('hidden');
+                closeShareModal();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }
 
-            let isOpeningEnvelope = false;
-            function openEnvelope3D() {
-                if (isOpeningEnvelope) return;
-                isOpeningEnvelope = true;
+            /**
+             * Hoạt ảnh mở nắp phong bì 3D, bắn pháo tim và trượt lá thư ra đọc
+             */
+            let isEnvelopeOpening = false;
+            function triggerOpenEnvelope() {
+                if (isEnvelopeOpening || !sealedEnvelopeView || sealedEnvelopeView.classList.contains('hidden')) return;
+                isEnvelopeOpening = true;
 
                 interactiveEnvelope.classList.remove('animate-float-envelope');
                 interactiveEnvelope.classList.add('envelope-opening');
 
                 const rect = interactiveEnvelope.getBoundingClientRect();
-                spawnHeartBurst(rect.left + rect.width / 2, rect.top + rect.height * 0.44, 34);
+                spawnHeartBurst(rect.left + rect.width / 2, rect.top + rect.height * 0.42, 26);
 
                 setTimeout(() => {
                     sealedEnvelopeView.classList.add('hidden');
                     openedLetterView.classList.remove('hidden');
-                    isOpeningEnvelope = false;
-                }, 900);
-            }
-
-            async function createAndCopyLink(letterData, showPanel = true) {
-                lastGeneratedLetter = letterData;
-                const meta = getDirMeta(letterData.dir);
-                const token = encodeLetterToToken(letterData);
-                const fullUrl = buildShareUrl(token);
-
-                if (showPanel) {
-                    shareBoxTitle.innerHTML = `<span>🎀</span><span>Link phong thư gửi ${meta.receiverName} đã sẵn sàng!</span>`;
-                    shareUrlOutput.value = fullUrl;
-                    shareHintText.innerHTML = `💬 Dán đường link này vào <strong>Messenger</strong> hoặc <strong>Zalo</strong> gửi cho <strong>${meta.receiverShort}</strong> — mở ra là thấy ngay phong bì hồng niêm phong dấu sáp <strong>${meta.waxSeal}</strong>, đọc xong còn viết thư hồi âm và gửi cái ôm ngược lại được luôn!`;
-
-                    if (isLocalOrSandboxEnv()) {
-                        localDeployNote.classList.remove('hidden');
-                    } else {
-                        localDeployNote.classList.add('hidden');
-                    }
-                    shareResultPanel.classList.remove('hidden');
-                }
-
-                const copied = await copyTextSafely(fullUrl);
-                if (showPanel) {
-                    copiedStatusBadge.textContent = copied ? 'Đã sao chép ✓' : 'Bấm Sao chép link bên dưới';
-                }
-                showToast(copied
-                    ? `Đã tạo & sao chép link gửi ${meta.receiverShort} rồi nè! 💌`
-                    : `Link gửi ${meta.receiverShort} đã sẵn sàng — bấm Sao chép link nhé 💕`);
+                    isEnvelopeOpening = false;
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }, 760);
             }
 
             // =========================================================================
-            // 8. GẮN TOÀN BỘ SỰ KIỆN TƯƠNG TÁC
+            // 8. HỘP THOẠI MODAL XÁC NHẬN LINK & XỬ LÝ TẠO LINK
             // =========================================================================
-            // Chuyển đổi chiều gửi thư
-            dirBtnHn2Nice.addEventListener('click', () => setComposeDirection('hn2nice'));
-            dirBtnNice2Hn.addEventListener('click', () => setComposeDirection('nice2hn'));
+            function openShareModal({ url, letter, compressed, copied }) {
+                const meta = getDirMeta(letter.dir);
+                shareBoxTitle.innerHTML = `<span>🎀</span><span>Link phong thư gửi ${meta.receiverShort} đã sẵn sàng!</span>`;
+                shareUrlOutput.value = url;
 
-            // Lưu nháp tự động theo chiều đang soạn
-            [letterTitleInput, letterBodyInput, letterPsInput].forEach((inputEl) => {
-                inputEl.addEventListener('input', () => {
+                copiedStatusBadge.textContent = copied ? 'Đã tự động sao chép ✓' : 'Bấm nút bên dưới để sao chép';
+                linkCompactBadge.textContent = compressed
+                    ? `Đã nén gọn (${url.length} ký tự)`
+                    : `Link chuẩn UTF-8 (${url.length} ký tự)`;
+
+                shareHintText.textContent =
+                    `Gửi link này qua Messenger/Zalo cho ${meta.receiverName}. Khi bấm vào, ${meta.receiverShort} sẽ thấy ngay phong bì 3D dấu sáp ${meta.waxSeal} bay từ ${meta.senderCity} sang ${meta.receiverCity}!`;
+
+                localDeployNote.classList.toggle('hidden', !isLocalOrSandboxEnv());
+                shareModalBackdrop.classList.remove('hidden');
+
+                setTimeout(() => {
+                    shareUrlOutput.focus();
+                    shareUrlOutput.select();
+                }, 120);
+            }
+
+            function closeShareModal() {
+                shareModalBackdrop.classList.add('hidden');
+            }
+
+            async function handleGenerateShareLink(letterObj) {
+                const encoded = await encodeLetterToToken(letterObj);
+                const shareUrl = buildShareUrl(encoded.token);
+
+                lastGeneratedLetter = letterObj;
+                lastGeneratedToken = encoded.token;
+
+                const copied = await copyTextSafely(shareUrl);
+                openShareModal({
+                    url: shareUrl,
+                    letter: letterObj,
+                    compressed: encoded.compressed,
+                    copied
+                });
+
+                if (copied) {
+                    showToast('Đã tạo & sao chép link phong thư! Gửi ngay cho người ấy nhé 💌');
+                } else {
+                    showToast('Link phong thư đã sẵn sàng! Bấm "Sao chép link" để gửi nhé 💌');
+                }
+            }
+
+            /**
+             * Bộ định tuyến từ URL: kiểm tra #thu=... hoặc ?thu=...
+             * Khi có dữ liệu thư hợp lệ -> BẮT BUỘC mở thẳng PHONG BÌ 3D NIÊM PHONG
+             */
+            async function handleRouteFromUrl() {
+                const rawToken = extractTokenFromUrl();
+                if (!rawToken) {
+                    showComposerView();
+                    return;
+                }
+
+                // Ẩn ngay trang soạn thư trong lúc giải mã để tránh nháy giao diện
+                writerSection.classList.add('hidden');
+
+                const decoded = await decodeTokenToLetter(rawToken);
+                if (decoded) {
+                    showReaderSealedEnvelope(decoded, { preview: false });
+                } else {
+                    showBrokenLinkView();
+                }
+            }
+
+            // =========================================================================
+            // 9. GẮN SỰ KIỆN TƯƠNG TÁC & KHỞI CHẠY ỨNG DỤNG
+            // =========================================================================
+            function bindEvents() {
+                // Chuyển đổi chiều gửi thư
+                dirBtnHn2Nice.addEventListener('click', () => applyComposeDirection('hn2nice'));
+                dirBtnNice2Hn.addEventListener('click', () => applyComposeDirection('nice2hn'));
+
+                // Tự động lưu nháp & đếm từ
+                [letterTitleInput, letterBodyInput, letterPsInput].forEach((el) => {
+                    el.addEventListener('input', () => {
+                        updateWordCount();
+                        saveDraftForDir(currentComposeDir);
+                    });
+                });
+
+                // Nút bỏ thẻ hồi âm
+                document.getElementById('clearReplyContextBtn').addEventListener('click', () => {
+                    pendingReplyTo = '';
+                    renderReplyContextUI();
+                });
+
+                // Nút Viết lại (xóa nháp chiều hiện tại)
+                document.getElementById('clearDraftBtn').addEventListener('click', () => {
+                    letterTitleInput.value = '';
+                    letterBodyInput.value = '';
+                    letterPsInput.value = '';
+                    pendingReplyTo = '';
+                    renderReplyContextUI();
                     updateWordCount();
                     saveDraftForDir(currentComposeDir);
+                    showToast('Đã làm mới trang giấy để bạn viết lại từ đầu ✨');
+                    letterTitleInput.focus();
                 });
-            });
 
-            document.getElementById('clearReplyContextBtn').addEventListener('click', () => {
-                pendingReplyTo = '';
-                renderReplyContextUI();
-            });
+                // Nút Xem trước phong thư
+                document.getElementById('previewLetterBtn').addEventListener('click', () => {
+                    const letter = collectLetterFromForm();
+                    if (!letter) return;
+                    showReaderSealedEnvelope(letter, { preview: true });
+                });
 
-            document.getElementById('clearDraftBtn').addEventListener('click', () => {
-                letterTitleInput.value = '';
-                letterBodyInput.value = '';
-                letterPsInput.value = '';
-                shareResultPanel.classList.add('hidden');
-                updateWordCount();
-                saveDraftForDir(currentComposeDir);
-                showToast('Đã làm mới tờ giấy thư ✨');
-            });
-
-            // Xem trước phong thư
-            document.getElementById('previewLetterBtn').addEventListener('click', () => {
-                const letter = collectLetterFromForm();
-                if (!letter) return;
-                showReaderMode(letter, 'preview');
-            });
-
-            // Tạo link gửi thư
-            document.getElementById('letterForm').addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const letter = collectLetterFromForm();
-                if (!letter) return;
-                await createAndCopyLink(letter, true);
-            });
-
-            // Sao chép lại link
-            document.getElementById('copyLinkAgainBtn').addEventListener('click', async () => {
-                const url = shareUrlOutput.value;
-                if (!url) return;
-                const ok = await copyTextSafely(url);
-                copiedStatusBadge.textContent = ok ? 'Đã sao chép ✓' : 'Chọn link & nhấn Ctrl+C';
-                showToast(ok ? 'Đã sao chép lại link thành công! 💖' : 'Hãy chọn link và nhấn Ctrl+C nhé');
-            });
-
-            // Mở thử link ngay
-            document.getElementById('openGeneratedLinkBtn').addEventListener('click', () => {
-                if (!lastGeneratedLetter) return;
-                showReaderMode(lastGeneratedLetter, 'shared');
-            });
-
-            // Mở phong bì 3D
-            interactiveEnvelope.addEventListener('click', openEnvelope3D);
-            interactiveEnvelope.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
+                // Submit form -> Tạo link gửi thư & mở modal xác nhận
+                document.getElementById('letterForm').addEventListener('submit', async (e) => {
                     e.preventDefault();
-                    openEnvelope3D();
-                }
-            });
-            document.getElementById('openEnvelopePromptBtn').addEventListener('click', openEnvelope3D);
-
-            // Quay lại chỉnh sửa từ chế độ Xem trước
-            backFromEnvelopeBtn.addEventListener('click', showWriterMode);
-            document.getElementById('backToEditBtn').addEventListener('click', showWriterMode);
-            document.getElementById('copyFromPreviewBtn').addEventListener('click', async () => {
-                if (!activeReaderLetter) return;
-                await createAndCopyLink(activeReaderLetter, false);
-            });
-
-            // Nút Gửi cái ôm phản hồi trong lá thư
-            document.getElementById('readerSendHugBtn').addEventListener('click', (e) => {
-                if (!activeReaderLetter) return;
-                const meta = getDirMeta(activeReaderLetter.dir);
-                const hugDir = meta.replyHugDir;
-                readerHugCount += 1;
-
-                const rect = e.currentTarget.getBoundingClientRect();
-                sendHug(hugDir, {
-                    originX: rect.left + rect.width / 2,
-                    originY: rect.top + rect.height / 2,
-                    fadeCard: true
+                    const letter = collectLetterFromForm();
+                    if (!letter) return;
+                    await handleGenerateShareLink(letter);
                 });
 
-                const routeLabel = hugDir === 'hn2nice'
-                    ? 'từ Hà Nội sang Nice cho Quỳnh Thư'
-                    : 'từ Nice về Hà Nội cho Hải Long';
-                hugCounterText.textContent = readerHugCount === 1
-                    ? `Đã gửi 1 cái ôm ấm áp bay ${routeLabel} 💕`
-                    : `Đã gửi ${readerHugCount} cái ôm ấm áp bay ${routeLabel} 💗`;
-                hugCounterText.classList.remove('hidden');
-            });
+                // Modal chia sẻ link
+                document.getElementById('closeShareModalBtn').addEventListener('click', closeShareModal);
+                shareModalBackdrop.addEventListener('click', (e) => {
+                    if (e.target === shareModalBackdrop) closeShareModal();
+                });
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && !shareModalBackdrop.classList.contains('hidden')) {
+                        closeShareModal();
+                    }
+                });
 
-            // Nút "Xem cái ôm bay trên bản đồ" ngay trong lá thư
-            document.getElementById('watchHugOnMapBtn').addEventListener('click', () => {
-                if (!activeReaderLetter) return;
-                const meta = getDirMeta(activeReaderLetter.dir);
-                setMapInspectMode(true);
-                setTimeout(() => {
-                    sendHug(meta.replyHugDir, { fadeCard: false });
-                }, 260);
-            });
+                document.getElementById('copyLinkAgainBtn').addEventListener('click', async () => {
+                    const url = shareUrlOutput.value;
+                    if (!url) return;
+                    const ok = await copyTextSafely(url);
+                    copiedStatusBadge.textContent = ok ? 'Đã sao chép ✓' : 'Hãy bôi đen ô link để sao chép';
+                    showToast(ok ? 'Đã sao chép link vào bộ nhớ tạm 📋' : 'Bạn hãy giữ ô link để sao chép nhé!');
+                });
 
-            // Nút "Viết thư hồi âm" -> đảo ngược chiều gửi tự động & gắn thẻ hồi âm bức thư vừa đọc
-            document.getElementById('writeReplyLetterBtn').addEventListener('click', () => {
-                if (!activeReaderLetter) return;
-                const meta = getDirMeta(activeReaderLetter.dir);
-                const replyDir = meta.opposite;
+                document.getElementById('openGeneratedLinkBtn').addEventListener('click', () => {
+                    if (!lastGeneratedLetter || !lastGeneratedToken) return;
+                    closeShareModal();
+                    // Cập nhật hash để mô phỏng chính xác trải nghiệm người nhận mở link
+                    try {
+                        window.history.replaceState(null, '', '#thu=' + lastGeneratedToken);
+                    } catch (err) {
+                        /* Bỏ qua nếu môi trường không hỗ trợ replaceState */
+                    }
+                    showReaderSealedEnvelope(lastGeneratedLetter, { preview: false });
+                });
 
-                // Xóa hash cũ để tránh tải lại thư cũ khi reload
-                try {
-                    const cleanUrl = window.location.href.split('#')[0].split('?')[0];
-                    window.history.replaceState(null, '', cleanUrl);
-                } catch (err) {
-                    window.location.hash = '';
-                }
+                // Mở phong bì 3D (chạm/click/Enter/Space)
+                interactiveEnvelope.addEventListener('click', triggerOpenEnvelope);
+                interactiveEnvelope.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        triggerOpenEnvelope();
+                    }
+                });
+                document.getElementById('openEnvelopePromptBtn').addEventListener('click', triggerOpenEnvelope);
 
-                pendingReplyTo = activeReaderLetter.title;
-                setComposeDirection(replyDir, { savePrevious: false, keepReplyContext: true });
-                renderReplyContextUI();
-                showWriterMode();
-                letterTitleInput.focus();
+                // Quay lại chỉnh sửa từ chế độ Xem trước
+                backFromEnvelopeBtn.addEventListener('click', showComposerView);
+                document.getElementById('backToEditBtn').addEventListener('click', showComposerView);
+                document.getElementById('copyFromPreviewBtn').addEventListener('click', async () => {
+                    if (!activeReaderLetter) return;
+                    await handleGenerateShareLink(activeReaderLetter);
+                });
 
-                const replyMeta = getDirMeta(replyDir);
-                showToast(`Đã chuyển sang chiều ${replyMeta.senderCity} → ${replyMeta.receiverCity} để viết hồi âm ✍️`);
-            });
-
-            // Nút Ngắm bản đồ & các nút gửi cái ôm trực tiếp 2 chiều
-            toggleMapInspectBtn.addEventListener('click', () => setMapInspectMode(!isMapInspecting));
-            document.getElementById('exitMapInspectBtn').addEventListener('click', () => setMapInspectMode(false));
-
-            function bindDirectHugButton(btnId, dir) {
-                const el = document.getElementById(btnId);
-                if (!el) return;
-                el.addEventListener('click', (e) => {
+                // Gửi cái ôm ngược lại từ bên trong lá thư
+                document.getElementById('readerSendHugBtn').addEventListener('click', (e) => {
+                    if (!activeReaderLetter) return;
+                    const meta = getDirMeta(activeReaderLetter.dir);
                     const rect = e.currentTarget.getBoundingClientRect();
-                    sendHug(dir, {
+                    readerHugCount += 1;
+
+                    sendHug(meta.replyHugDir, {
                         originX: rect.left + rect.width / 2,
                         originY: rect.top + rect.height / 2,
                         fadeCard: true
                     });
+
+                    const destName = meta.senderShort;
+                    const destCity = meta.senderCity;
+                    hugCounterText.textContent = `💗 Bạn đã gửi ${readerHugCount} cái ôm ấm áp tới ${destName} (${destCity})!`;
+                    hugCounterText.classList.remove('hidden');
+                });
+
+                // Xem cái ôm bay rõ nét trên bản đồ từ bên trong lá thư
+                document.getElementById('watchHugOnMapBtn').addEventListener('click', () => {
+                    if (!activeReaderLetter) return;
+                    const meta = getDirMeta(activeReaderLetter.dir);
+                    setMapInspectMode(true);
+                    sendHug(meta.replyHugDir, { fadeCard: false });
+                });
+
+                // Viết thư hồi âm theo chiều ngược lại
+                document.getElementById('writeReplyLetterBtn').addEventListener('click', () => {
+                    if (!activeReaderLetter) return;
+                    const meta = getDirMeta(activeReaderLetter.dir);
+                    pendingReplyTo = activeReaderLetter.title;
+                    clearUrlHashSilently();
+                    applyComposeDirection(meta.opposite, { savePrevious: false });
+                    showComposerView();
+                    showToast(`Đã chuyển sang chiều ${meta.receiverCity} → ${meta.senderCity} để viết thư hồi âm 💌`);
+                    setTimeout(() => letterTitleInput.focus(), 220);
+                });
+
+                // Màn hình báo link lỗi
+                document.getElementById('retryBrokenLinkBtn').addEventListener('click', () => {
+                    handleRouteFromUrl();
+                });
+                document.getElementById('writeNewFromBrokenBtn').addEventListener('click', () => {
+                    clearUrlHashSilently();
+                    showComposerView();
+                });
+
+                // Chế độ Ngắm bản đồ
+                toggleMapInspectBtn.addEventListener('click', () => setMapInspectMode(!isMapInspecting));
+                document.getElementById('exitMapInspectBtn').addEventListener('click', () => setMapInspectMode(false));
+
+                // Nút gửi cái ôm 2 chiều trên thanh tiện ích & thanh Ngắm bản đồ
+                const bindQuickHug = (btnId, dir) => {
+                    document.getElementById(btnId).addEventListener('click', (e) => {
+                        const rect = e.currentTarget.getBoundingClientRect();
+                        sendHug(dir, {
+                            originX: rect.left + rect.width / 2,
+                            originY: rect.top + rect.height / 2,
+                            fadeCard: true
+                        });
+                    });
+                };
+                bindQuickHug('quickHugHnToNice', 'hn2nice');
+                bindQuickHug('quickHugNiceToHn', 'nice2hn');
+                bindQuickHug('dockHugHnToNice', 'hn2nice');
+                bindQuickHug('dockHugNiceToHn', 'nice2hn');
+
+                // Lắng nghe hashchange để mở thẳng phong bì ngay khi dán link mới trong cùng tab
+                window.addEventListener('hashchange', () => {
+                    handleRouteFromUrl();
+                });
+
+                window.addEventListener('resize', () => {
+                    resizeCanvas();
+                    updateResponsiveMapViewBox();
                 });
             }
 
-            bindDirectHugButton('quickHugHnToNice', 'hn2nice');
-            bindDirectHugButton('quickHugNiceToHn', 'nice2hn');
-            bindDirectHugButton('dockHugHnToNice', 'hn2nice');
-            bindDirectHugButton('dockHugNiceToHn', 'nice2hn');
-
-            // =========================================================================
-            // 9. ĐỊNH TUYẾN URL & KHỞI TẠO ỨNG DỤNG
-            // =========================================================================
-            function routeFromUrl() {
-                const token = getTokenFromUrl();
-                if (token) {
-                    const decoded = decodeTokenToLetter(token);
-                    if (decoded) {
-                        showReaderMode(decoded, 'shared');
-                        return;
-                    }
-                    showToast('Liên kết bức thư chưa đầy đủ, bạn hãy viết một lá thư mới nhé 💕');
-                }
-                setComposeDirection(currentComposeDir, { savePrevious: false, keepReplyContext: false });
-                showWriterMode();
-            }
-
-            window.addEventListener('hashchange', routeFromUrl);
-
-            window.addEventListener('load', () => {
+            // Khởi tạo toàn bộ ứng dụng
+            function initApp() {
                 buildWorldMapSvg();
                 updateResponsiveMapViewBox();
-
                 resizeCanvas();
                 initAmbientPetals();
+                updateLiveClocks();
+                setInterval(updateLiveClocks, 1000);
 
                 requestAnimationFrame(animateMapTraveler);
                 requestAnimationFrame(renderCanvasLoop);
 
-                updateLiveClocks();
-                setInterval(updateLiveClocks, 1000);
+                applyComposeDirection('hn2nice', { savePrevious: false });
+                bindEvents();
+                handleRouteFromUrl();
+            }
 
-                routeFromUrl();
-            });
-
-            window.addEventListener('resize', () => {
-                updateResponsiveMapViewBox();
-                resizeCanvas();
-                initAmbientPetals();
-            });
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initApp);
+            } else {
+                initApp();
+            }
         })();
     </script>
 </body>
