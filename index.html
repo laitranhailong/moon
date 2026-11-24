@@ -1,0 +1,3201 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Lại Trần Hải Long ⇄ Lưu Quỳnh Thư — Hà Nội ↔ Nice</title>
+    <meta name="description" content="Không gian gửi thư tình 2 chiều và những cái ôm vượt 9.480 km giữa Hà Nội và Nice của Lại Trần Hải Long & Lưu Quỳnh Thư.">
+    <meta name="theme-color" content="#ffd1e6">
+
+    <!-- Google Fonts trẻ trung, năng động, hỗ trợ dấu tiếng Việt sắc nét -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Be+Vietnam+Pro:wght@400;500;600&family=Mali:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+    <!-- CSS thuần tối ưu tốc độ tải cực nhanh trên Messenger / Zalo / Mobile -->
+    <style>
+        /* ========================================================================= */
+        /* 1. BIẾN MÀU SẮC, FONT CHỮ & THIẾT LẬP CƠ BẢN                              */
+        /* ========================================================================= */
+        :root {
+            --font-display: 'Baloo 2', cursive, sans-serif;
+            --font-sans: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-hand: 'Mali', cursive, sans-serif;
+
+            --blush-50: #fff8fb;
+            --blush-100: #fff0f6;
+            --blush-200: #ffe4ef;
+            --blush-300: #ffd1e6;
+            --blush-400: #f9a8d4;
+
+            --berry-400: #f472b6;
+            --berry-500: #ec4899;
+            --berry-600: #db2777;
+            --berry-700: #be185d;
+
+            --ink: #4a1d34;
+            --ink-soft: #7a3b5a;
+            --ink-muted: #a36583;
+
+            --glass-bg: rgba(255, 255, 255, 0.76);
+            --glass-pill: rgba(255, 255, 255, 0.74);
+            --glass-border: rgba(255, 255, 255, 0.86);
+            --shadow-card: 0 24px 60px -18px rgba(190, 24, 93, 0.22), 0 0 0 5px rgba(255, 255, 255, 0.30), inset 0 1px 0 rgba(255, 255, 255, 0.94);
+            --shadow-pill: 0 10px 28px -10px rgba(219, 39, 119, 0.22);
+            --shadow-glow: 0 10px 26px -6px rgba(236, 72, 153, 0.46);
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            min-height: 100%;
+            font-family: var(--font-sans);
+            color: var(--ink);
+            background: linear-gradient(145deg, #ffe4ef 0%, #ffd1e6 46%, #fff0f6 100%);
+            background-attachment: fixed;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        ::selection {
+            background: var(--blush-300);
+            color: var(--berry-700);
+        }
+
+        button, input, textarea {
+            font-family: inherit;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            background: none;
+            color: inherit;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* ========================================================================= */
+        /* 2. LỚP NỀN BẢN ĐỒ THẾ GIỚI HỒNG & CHẾ ĐỘ NGẮM BẢN ĐỒ                      */
+        /* ========================================================================= */
+        .world-map-layer {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+            transition: opacity 0.5s ease;
+        }
+
+        .bokeh-orb {
+            position: absolute;
+            border-radius: 9999px;
+            filter: blur(68px);
+            pointer-events: none;
+        }
+        .bokeh-1 {
+            top: -100px;
+            left: -80px;
+            width: 26rem;
+            height: 26rem;
+            background: rgba(255, 255, 255, 0.52);
+        }
+        .bokeh-2 {
+            top: 30%;
+            right: -110px;
+            width: 30rem;
+            height: 30rem;
+            background: rgba(244, 114, 182, 0.22);
+        }
+        .bokeh-3 {
+            bottom: -110px;
+            left: 22%;
+            width: 28rem;
+            height: 28rem;
+            background: rgba(255, 209, 230, 0.58);
+        }
+
+        #worldMapSvg {
+            width: 100%;
+            height: 100%;
+            display: block;
+            position: relative;
+            z-index: 1;
+        }
+
+        .map-landmass {
+            fill: rgba(236, 72, 153, 0.13);
+            stroke: rgba(219, 39, 119, 0.25);
+            stroke-width: 1.15;
+            stroke-linejoin: round;
+            transition: fill 0.5s ease, stroke 0.5s ease;
+        }
+
+        .map-graticule {
+            fill: none;
+            stroke: rgba(236, 72, 153, 0.085);
+            stroke-width: 0.85;
+            stroke-dasharray: 4 6;
+            transition: stroke 0.5s ease;
+        }
+
+        .map-route-group {
+            opacity: 0.88;
+            transition: opacity 0.45s ease;
+        }
+
+        /* Làm rõ bản đồ khi ở chế độ Ngắm bản đồ hoặc đang xem cái ôm bay */
+        body.map-inspect-mode .map-landmass,
+        body.hug-watching-mode .map-landmass {
+            fill: rgba(236, 72, 153, 0.21);
+            stroke: rgba(219, 39, 119, 0.40);
+        }
+        body.map-inspect-mode .map-graticule,
+        body.hug-watching-mode .map-graticule {
+            stroke: rgba(236, 72, 153, 0.16);
+        }
+        body.map-inspect-mode .map-route-group,
+        body.hug-watching-mode .map-route-group {
+            opacity: 1;
+        }
+
+        /* Ẩn mờ thẻ thư khi Ngắm bản đồ */
+        body.map-inspect-mode #mainContentWrap {
+            opacity: 0.04;
+            transform: scale(0.95) translateY(12px);
+            pointer-events: none;
+            filter: blur(2.5px);
+        }
+
+        /* Tạm làm mờ nhẹ thẻ thư trong ~2.4s khi bấm Gửi cái ôm để thấy trái tim bay trên bản đồ */
+        body.hug-watching-mode:not(.map-inspect-mode) #mainContentWrap {
+            opacity: 0.14;
+            transform: scale(0.975);
+            filter: blur(1.5px);
+        }
+
+        @keyframes arrowDashFlow {
+            0% { stroke-dashoffset: 0; }
+            100% { stroke-dashoffset: -48; }
+        }
+        .route-dash-animated {
+            animation: arrowDashFlow 2.7s linear infinite;
+        }
+
+        @keyframes mapRadarPulse {
+            0% { r: 6; opacity: 0.85; stroke-width: 2.4; }
+            100% { r: 30; opacity: 0; stroke-width: 0.6; }
+        }
+        .radar-ring-1 {
+            animation: mapRadarPulse 2.8s cubic-bezier(0.2, 0.8, 0.3, 1) infinite;
+        }
+        .radar-ring-2 {
+            animation: mapRadarPulse 2.8s cubic-bezier(0.2, 0.8, 0.3, 1) 1.4s infinite;
+        }
+
+        /* Sóng lan tỏa rực rỡ khi cái ôm chạm tới điểm đích trên bản đồ */
+        @keyframes hugImpactWave {
+            0% { r: 10; opacity: 0.95; stroke-width: 4.5; }
+            100% { r: 68; opacity: 0; stroke-width: 0.5; }
+        }
+        .hug-impact-ring {
+            animation: hugImpactWave 1.15s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes pinCelebratePop {
+            0%, 100% { transform: scale(1); }
+            30% { transform: scale(1.48); }
+            60% { transform: scale(0.92); }
+            82% { transform: scale(1.24); }
+        }
+        .pin-celebrate {
+            transform-box: fill-box;
+            transform-origin: center;
+            animation: pinCelebratePop 0.85s ease-in-out 2;
+        }
+
+        /* Canvas hiệu ứng cánh hoa rơi & tim bay */
+        #romanticCanvas {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        /* ========================================================================= */
+        /* 3. THANH PILL ĐIỀU KHIỂN PHÍA TRÊN (GIỜ THỰC TẾ + NGẮM BẢN ĐỒ + ÔM 2 CHIỀU)*/
+        /* ========================================================================= */
+        .top-header {
+            position: relative;
+            z-index: 25;
+            width: 100%;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 14px 12px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .frosted-pill {
+            background: var(--glass-pill);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow-pill);
+            border-radius: 9999px;
+        }
+
+        .clock-bar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 8px 14px;
+            padding: 8px 16px;
+            font-size: 13px;
+        }
+
+        .clock-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 9999px;
+            background: var(--berry-500);
+            box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.22);
+            animation: softPulse 2s ease-in-out infinite;
+            flex-shrink: 0;
+        }
+
+        @keyframes softPulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.22); opacity: 0.72; }
+        }
+
+        .clock-name {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 14.5px;
+            color: var(--berry-700);
+        }
+
+        .clock-city {
+            color: var(--ink-soft);
+            font-weight: 500;
+            font-size: 12.5px;
+        }
+
+        .clock-time {
+            padding: 2px 9px;
+            border-radius: 9999px;
+            background: rgba(255, 228, 239, 0.95);
+            color: var(--berry-700);
+            font-weight: 600;
+            font-size: 12.5px;
+            font-variant-numeric: tabular-nums;
+            border: 1px solid rgba(249, 168, 212, 0.55);
+        }
+
+        .clock-arrow {
+            color: var(--berry-500);
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 16px;
+            user-select: none;
+        }
+
+        .btn-map-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border-radius: 9999px;
+            background: linear-gradient(135deg, var(--berry-500), var(--berry-600));
+            color: #ffffff;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 13px;
+            box-shadow: 0 6px 16px -4px rgba(219, 39, 119, 0.42);
+            transition: transform 0.2s ease, filter 0.2s ease;
+            min-height: 34px;
+        }
+        .btn-map-toggle:hover {
+            filter: brightness(1.06);
+            transform: translateY(-1px);
+        }
+        .btn-map-toggle:active {
+            transform: scale(0.96);
+        }
+
+        /* Thanh tiện ích nhỏ gửi cái ôm 2 chiều trực tiếp trên bản đồ */
+        .quick-hug-bar {
+            display: inline-flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 5px 8px;
+        }
+
+        .btn-quick-hug {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px 13px;
+            border-radius: 9999px;
+            background: rgba(255, 240, 246, 0.92);
+            border: 1px solid rgba(244, 114, 182, 0.45);
+            color: var(--berry-700);
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 12.5px;
+            transition: all 0.2s ease;
+            min-height: 32px;
+        }
+        .btn-quick-hug:hover {
+            background: linear-gradient(135deg, var(--berry-500), var(--berry-600));
+            color: #ffffff;
+            border-color: transparent;
+            box-shadow: 0 6px 16px -4px rgba(236, 72, 153, 0.45);
+            transform: translateY(-1px);
+        }
+        .btn-quick-hug:active {
+            transform: scale(0.95);
+        }
+
+        /* Thanh đáy màn hình khi đang ở chế độ Ngắm bản đồ */
+        .map-inspect-dock {
+            position: fixed;
+            bottom: 22px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 35;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            max-width: calc(100vw - 24px);
+            padding: 8px 12px;
+            animation: fadePopUp 0.4s ease forwards;
+        }
+
+        /* ========================================================================= */
+        /* 4. KHUNG CHÍNH & THẺ KÍNH MỜ GLASSMORPHISM                                */
+        /* ========================================================================= */
+        #mainContentWrap {
+            position: relative;
+            z-index: 10;
+            flex: 1;
+            width: 100%;
+            max-width: 690px;
+            margin: 0 auto;
+            padding: 18px 14px 36px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.45s ease, transform 0.45s ease, filter 0.45s ease;
+        }
+
+        .section-shell {
+            width: 100%;
+        }
+
+        .glass-card {
+            width: 100%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1.5px solid var(--glass-border);
+            border-radius: 30px;
+            box-shadow: var(--shadow-card);
+            padding: 26px 22px 28px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-sparkle {
+            position: absolute;
+            pointer-events: none;
+            user-select: none;
+            color: rgba(244, 114, 182, 0.35);
+        }
+        .card-sparkle.top-right { top: 14px; right: 18px; font-size: 22px; }
+        .card-sparkle.bottom-left { bottom: 14px; left: 18px; font-size: 18px; color: rgba(244, 114, 182, 0.25); }
+
+        @keyframes fadePopUp {
+            from { opacity: 0; transform: translateY(14px) scale(0.985); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .animate-reveal {
+            animation: fadePopUp 0.52s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        /* ========================================================================= */
+        /* 5. BỘ CHUYỂN ĐỔI CHIỀU GỬI (SEGMENTED TOGGLE) & FORM SOẠN THƯ             */
+        /* ========================================================================= */
+        .direction-toggle-wrap {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .segmented-toggle {
+            display: inline-grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+            padding: 5px;
+            border-radius: 9999px;
+            background: rgba(255, 228, 239, 0.85);
+            border: 1px solid rgba(249, 168, 212, 0.72);
+            box-shadow: inset 0 2px 6px rgba(190, 24, 93, 0.08);
+            width: 100%;
+            max-width: 440px;
+        }
+
+        .seg-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 12px;
+            border-radius: 9999px;
+            color: var(--ink-soft);
+            transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+            min-height: 46px;
+        }
+
+        .seg-btn .seg-route {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 14.5px;
+            line-height: 1.2;
+        }
+
+        .seg-btn .seg-sub {
+            font-size: 11px;
+            font-weight: 500;
+            opacity: 0.82;
+            margin-top: 1px;
+        }
+
+        .seg-btn.active {
+            background: linear-gradient(135deg, var(--berry-500), var(--berry-600));
+            color: #ffffff;
+            box-shadow: 0 8px 20px -6px rgba(219, 39, 119, 0.5);
+        }
+
+        .seg-btn:not(.active):hover {
+            background: rgba(255, 255, 255, 0.65);
+            color: var(--berry-700);
+        }
+
+        /* Đầu thẻ soạn thư */
+        .composer-head {
+            text-align: center;
+            padding-bottom: 18px;
+            margin-bottom: 18px;
+            border-bottom: 1px solid rgba(255, 209, 230, 0.9);
+        }
+
+        .distance-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 14px;
+            border-radius: 9999px;
+            background: rgba(255, 228, 239, 0.92);
+            border: 1px solid var(--blush-300);
+            color: var(--berry-700);
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 12px;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .composer-title {
+            margin: 0;
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: clamp(22px, 4.4vw, 32px);
+            line-height: 1.2;
+            color: var(--berry-600);
+        }
+
+        .composer-subtitle {
+            margin: 6px 0 0;
+            font-size: 13.5px;
+            color: var(--ink-soft);
+            line-height: 1.5;
+        }
+
+        /* Badge hồi âm cho bức thư trước */
+        .reply-context-badge {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 9px 14px;
+            margin-bottom: 16px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(255, 240, 246, 0.95), rgba(255, 228, 239, 0.92));
+            border: 1px dashed rgba(236, 72, 153, 0.55);
+            color: var(--berry-700);
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .reply-context-text {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            min-width: 0;
+        }
+
+        .reply-context-text strong {
+            font-family: var(--font-display);
+            font-weight: 700;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .reply-clear-btn {
+            flex-shrink: 0;
+            width: 26px;
+            height: 26px;
+            border-radius: 9999px;
+            background: rgba(255, 255, 255, 0.85);
+            color: var(--berry-600);
+            font-weight: 700;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .reply-clear-btn:hover {
+            background: #ffffff;
+        }
+
+        /* Trường nhập liệu */
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .field-label-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 6px;
+        }
+
+        .field-label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--ink-soft);
+        }
+
+        .field-optional {
+            text-transform: none;
+            font-weight: 400;
+            color: var(--ink-muted);
+        }
+
+        .word-count {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--ink-muted);
+        }
+
+        .input-title {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.84);
+            border: 1.5px solid var(--blush-300);
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 20px;
+            color: var(--berry-600);
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .input-title::placeholder {
+            color: rgba(244, 114, 182, 0.56);
+        }
+
+        .input-ps {
+            width: 100%;
+            padding: 10px 16px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.84);
+            border: 1.5px solid var(--blush-300);
+            font-family: var(--font-hand);
+            font-style: italic;
+            font-size: 16.5px;
+            color: var(--ink);
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .input-ps::placeholder {
+            color: rgba(163, 101, 131, 0.58);
+        }
+
+        .input-title:focus,
+        .input-ps:focus {
+            outline: none;
+            border-color: var(--berry-400);
+            box-shadow: 0 0 0 3px rgba(244, 114, 182, 0.24);
+        }
+
+        /* Khung giấy kẻ dòng hồng dịu mắt với font Mali */
+        .paper-frame {
+            border-radius: 20px;
+            background: rgba(255, 248, 251, 0.9);
+            border: 1.5px solid var(--blush-300);
+            padding: 12px 16px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .paper-frame:focus-within {
+            border-color: var(--berry-400);
+            box-shadow: 0 0 0 3px rgba(244, 114, 182, 0.24);
+        }
+
+        .lined-hand-paper {
+            width: 100%;
+            min-height: 216px;
+            resize: vertical;
+            border: none;
+            background-color: transparent;
+            background-image: repeating-linear-gradient(
+                to bottom,
+                transparent 0px,
+                transparent 35px,
+                rgba(236, 72, 153, 0.16) 35px,
+                rgba(236, 72, 153, 0.16) 36px
+            );
+            line-height: 36px;
+            background-attachment: local;
+            font-family: var(--font-hand);
+            font-weight: 500;
+            font-size: 18px;
+            color: var(--ink);
+        }
+        .lined-hand-paper::placeholder {
+            color: rgba(163, 101, 131, 0.56);
+        }
+        .lined-hand-paper:focus {
+            outline: none;
+        }
+
+        .composer-meta-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            font-size: 12px;
+            color: var(--ink-muted);
+            margin-bottom: 18px;
+        }
+
+        .draft-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .draft-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 9999px;
+            background: var(--berry-400);
+        }
+
+        .composer-sign-preview {
+            font-family: var(--font-hand);
+            font-size: 13px;
+            color: var(--berry-600);
+            font-weight: 600;
+        }
+
+        .btn-text-link {
+            font-size: 12.5px;
+            font-weight: 600;
+            color: var(--ink-soft);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            padding: 2px 4px;
+            transition: color 0.2s;
+        }
+        .btn-text-link:hover {
+            color: var(--berry-600);
+        }
+
+        /* Cụm nút hành động chính */
+        .action-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 13px 24px;
+            border-radius: 9999px;
+            background: linear-gradient(135deg, var(--berry-500) 0%, #f43f8e 52%, var(--berry-600) 100%);
+            color: #ffffff;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 16px;
+            box-shadow: var(--shadow-glow);
+            transition: transform 0.2s ease, filter 0.2s ease;
+            min-height: 48px;
+        }
+        .btn-primary:hover {
+            filter: brightness(1.06);
+            transform: translateY(-1.5px);
+        }
+        .btn-primary:active {
+            transform: scale(0.97);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 22px;
+            border-radius: 9999px;
+            background: rgba(255, 255, 255, 0.92);
+            border: 2px solid rgba(249, 168, 212, 0.85);
+            color: var(--berry-600);
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 15.5px;
+            box-shadow: 0 6px 18px -8px rgba(219, 39, 119, 0.25);
+            transition: transform 0.2s ease, background 0.2s ease;
+            min-height: 48px;
+        }
+        .btn-secondary:hover {
+            background: var(--blush-100);
+            transform: translateY(-1.5px);
+        }
+        .btn-secondary:active {
+            transform: scale(0.97);
+        }
+
+        /* Hộp kết quả chia sẻ link */
+        .share-panel {
+            margin-top: 22px;
+            padding-top: 18px;
+            border-top: 1px solid rgba(255, 209, 230, 0.9);
+        }
+
+        .share-box {
+            border-radius: 22px;
+            background: rgba(255, 240, 246, 0.92);
+            border: 1.5px solid var(--blush-300);
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .share-box-head {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+        }
+
+        .share-box-title {
+            margin: 0;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 16px;
+            color: var(--berry-700);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .copied-pill {
+            font-size: 11.5px;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 9999px;
+            background: #ffffff;
+            color: var(--berry-600);
+            border: 1px solid var(--blush-300);
+        }
+
+        .share-url-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .share-url-input {
+            flex: 1 1 220px;
+            min-width: 0;
+            padding: 10px 14px;
+            border-radius: 14px;
+            background: #ffffff;
+            border: 1.5px solid var(--blush-300);
+            font-size: 12.5px;
+            color: var(--ink-soft);
+            font-weight: 500;
+        }
+        .share-url-input:focus {
+            outline: none;
+            border-color: var(--berry-400);
+        }
+
+        .share-btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .btn-small-berry {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 9px 15px;
+            border-radius: 14px;
+            background: var(--berry-600);
+            color: #ffffff;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 13.5px;
+            transition: transform 0.18s ease, background 0.18s ease;
+            min-height: 40px;
+        }
+        .btn-small-berry:hover {
+            background: var(--berry-700);
+        }
+        .btn-small-berry:active {
+            transform: scale(0.96);
+        }
+
+        .btn-small-outline {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 9px 15px;
+            border-radius: 14px;
+            background: #ffffff;
+            border: 1.5px solid var(--blush-400);
+            color: var(--berry-700);
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 13.5px;
+            transition: transform 0.18s ease, background 0.18s ease;
+            min-height: 40px;
+        }
+        .btn-small-outline:hover {
+            background: var(--blush-100);
+        }
+        .btn-small-outline:active {
+            transform: scale(0.96);
+        }
+
+        .share-hint {
+            margin: 0;
+            font-size: 12.5px;
+            color: var(--ink-soft);
+            line-height: 1.55;
+        }
+
+        .local-deploy-note {
+            padding: 10px 13px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px dashed rgba(219, 39, 119, 0.42);
+            font-size: 12px;
+            color: var(--berry-700);
+            line-height: 1.55;
+        }
+
+        /* ========================================================================= */
+        /* 6. PHONG BÌ 3D MÀU HỒNG NIÊM PHONG DẤU SÁP L ♥ T / T ♥ L                  */
+        /* ========================================================================= */
+        .envelope-view {
+            width: 100%;
+            text-align: center;
+            padding: 14px 0 24px;
+        }
+
+        .flight-banner-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 18px;
+            color: var(--berry-700);
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 22px;
+        }
+
+        @keyframes floatEnvelope {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-9px); }
+        }
+        .animate-float-envelope {
+            animation: floatEnvelope 4s ease-in-out infinite;
+        }
+
+        .envelope-stage {
+            perspective: 1300px;
+            padding: 20px 8px 10px;
+        }
+
+        .envelope-container {
+            position: relative;
+            width: 100%;
+            max-width: 430px;
+            height: 282px;
+            margin: 0 auto;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+            outline: none;
+        }
+        .envelope-container:hover,
+        .envelope-container:focus-visible {
+            transform: translateY(-5px) scale(1.015);
+        }
+
+        .envelope-back {
+            position: absolute;
+            inset: 0;
+            border-radius: 26px;
+            background: linear-gradient(155deg, #f9a8d4 0%, #ec4899 100%);
+            box-shadow:
+                0 26px 56px -16px rgba(219, 39, 119, 0.4),
+                0 0 0 1.5px rgba(255, 255, 255, 0.55) inset;
+        }
+
+        .envelope-paper-slip {
+            position: absolute;
+            left: 20px;
+            right: 20px;
+            bottom: 18px;
+            height: 228px;
+            background: linear-gradient(180deg, #ffffff 0%, #fff1f7 100%);
+            border-radius: 18px;
+            border: 1px solid rgba(249, 168, 212, 0.8);
+            box-shadow: 0 10px 24px rgba(190, 24, 93, 0.14);
+            z-index: 2;
+            padding: 20px 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.85s cubic-bezier(0.34, 1.45, 0.64, 1);
+        }
+        .envelope-opening .envelope-paper-slip {
+            transform: translateY(-116px);
+        }
+
+        .envelope-peek-title {
+            margin: 4px 0 0;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 20px;
+            color: var(--berry-600);
+            line-height: 1.3;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .envelope-pocket {
+            position: absolute;
+            inset: 0;
+            border-radius: 26px;
+            overflow: hidden;
+            z-index: 3;
+            pointer-events: none;
+        }
+        .envelope-pocket::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(145deg, #ffd4e7 0%, #f9a8d4 54%, #f472b6 100%);
+            clip-path: polygon(0 0, 50% 53%, 100% 0, 100% 100%, 0 100%);
+        }
+        .envelope-pocket::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(255, 247, 251, 0.58) 0%, rgba(244, 114, 182, 0.42) 100%);
+            clip-path: polygon(0 100%, 50% 45%, 100% 100%);
+        }
+
+        .envelope-address-overlay {
+            position: absolute;
+            left: 16px;
+            right: 16px;
+            bottom: 14px;
+            z-index: 4;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+        .envelope-opening .envelope-address-overlay {
+            opacity: 0.18;
+        }
+
+        .envelope-address-card {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            border-radius: 16px;
+            padding: 9px 15px;
+            border: 1px solid #ffffff;
+            box-shadow: 0 6px 16px rgba(190, 24, 93, 0.14);
+            text-align: center;
+            max-width: 100%;
+        }
+
+        .envelope-route-line {
+            margin: 0;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--berry-700);
+        }
+
+        .envelope-people-line {
+            margin: 3px 0 0;
+            font-size: 12.5px;
+            color: var(--ink-soft);
+            font-weight: 500;
+        }
+
+        .envelope-people-line strong {
+            font-family: var(--font-display);
+            font-weight: 700;
+            color: var(--berry-600);
+            font-size: 13.5px;
+        }
+
+        .envelope-flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 158px;
+            background: linear-gradient(180deg, #f472b6 0%, #fbcfe8 100%);
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
+            border-top-left-radius: 26px;
+            border-top-right-radius: 26px;
+            transform-origin: top center;
+            transition: transform 0.72s cubic-bezier(0.4, 0, 0.2, 1), z-index 0.35s;
+            z-index: 5;
+            filter: drop-shadow(0 8px 12px rgba(190, 24, 93, 0.22));
+        }
+        .envelope-opening .envelope-flap {
+            transform: rotateX(180deg);
+            z-index: 1;
+        }
+
+        .wax-seal-btn {
+            position: absolute;
+            top: 120px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 6;
+            width: 68px;
+            height: 68px;
+            border-radius: 9999px;
+            background: radial-gradient(circle at 32% 30%, #f9a8d4 0%, #ec4899 50%, #be185d 100%);
+            border: 3px solid rgba(255, 240, 246, 0.94);
+            box-shadow:
+                0 10px 24px rgba(190, 24, 93, 0.44),
+                0 0 24px rgba(244, 114, 182, 0.6),
+                inset 0 2px 5px rgba(255, 255, 255, 0.52);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.35s ease;
+        }
+        .envelope-container:hover .wax-seal-btn {
+            transform: translateX(-50%) scale(1.09);
+        }
+        .envelope-opening .wax-seal-btn {
+            opacity: 0;
+            transform: translateX(-50%) scale(0.35) rotate(22deg);
+            pointer-events: none;
+        }
+        .wax-seal-text {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 16.5px;
+            color: #ffffff;
+            letter-spacing: 0.04em;
+            text-shadow: 0 1px 3px rgba(131, 24, 67, 0.45);
+        }
+
+        .envelope-prompt-wrap {
+            margin-top: 22px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-open-prompt {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 11px 24px;
+            color: var(--berry-600);
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 16px;
+            transition: transform 0.2s ease;
+            min-height: 46px;
+        }
+        .btn-open-prompt:hover {
+            transform: scale(1.04);
+        }
+
+        /* ========================================================================= */
+        /* 7. LÁ THƯ ĐÃ MỞ & CỤM HÀNH ĐỘNG 2 CHIỀU                                   */
+        /* ========================================================================= */
+        .reader-top-meta {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            padding-bottom: 14px;
+            margin-bottom: 18px;
+            border-bottom: 1px solid rgba(255, 209, 230, 0.9);
+            font-size: 13px;
+            color: var(--ink-muted);
+        }
+
+        .reader-date {
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        .reader-route-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 3px 12px;
+            border-radius: 9999px;
+            background: rgba(255, 228, 239, 0.9);
+            color: var(--berry-700);
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 12.5px;
+        }
+
+        .reader-reply-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 13px;
+            margin-bottom: 14px;
+            border-radius: 14px;
+            background: rgba(255, 240, 246, 0.95);
+            border: 1px dashed rgba(236, 72, 153, 0.45);
+            color: var(--berry-700);
+            font-size: 12.5px;
+            font-weight: 500;
+        }
+
+        .reader-title {
+            margin: 0 0 18px;
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: clamp(26px, 5vw, 35px);
+            line-height: 1.25;
+            color: var(--berry-600);
+            word-break: break-word;
+        }
+
+        .reader-body {
+            font-family: var(--font-hand);
+            font-weight: 500;
+            font-size: 19px;
+            line-height: 1.92;
+            color: var(--ink);
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .reader-ps {
+            margin-top: 24px;
+            padding-top: 14px;
+            border-top: 1.5px dashed rgba(249, 168, 212, 0.85);
+            font-family: var(--font-hand);
+            font-style: italic;
+            font-size: 17px;
+            color: var(--ink-soft);
+            line-height: 1.65;
+        }
+
+        .reader-ps-tag {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-style: normal;
+            color: var(--berry-600);
+            margin-right: 6px;
+        }
+
+        .reader-signature {
+            margin-top: 28px;
+            padding-top: 18px;
+            border-top: 1px solid rgba(255, 209, 230, 0.85);
+            text-align: right;
+        }
+
+        .sign-closing {
+            margin: 0;
+            font-family: var(--font-hand);
+            font-style: italic;
+            font-size: 16px;
+            color: var(--ink-soft);
+        }
+
+        .sign-name {
+            margin: 3px 0 0;
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: clamp(23px, 4.5vw, 29px);
+            color: var(--berry-600);
+        }
+
+        .sign-place {
+            margin: 2px 0 0;
+            font-size: 11.5px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--ink-muted);
+        }
+
+        /* Cụm nút 2 chiều cuối thư */
+        .reader-actions-block {
+            margin-top: 28px;
+            padding-top: 22px;
+            border-top: 1px solid rgba(255, 209, 230, 0.85);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            text-align: center;
+        }
+
+        .hug-feedback {
+            margin: 2px 0 0;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 14.5px;
+            color: var(--berry-600);
+        }
+
+        .reader-sub-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            margin-top: 4px;
+        }
+
+        .preview-controls {
+            margin-top: 18px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        /* ========================================================================= */
+        /* 8. TOAST THÔNG BÁO & THANH CUỘN                                           */
+        /* ========================================================================= */
+        .toast-stack {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 60;
+            pointer-events: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            width: calc(100% - 28px);
+            max-width: 440px;
+        }
+
+        .toast-item {
+            padding: 11px 20px;
+            border-radius: 9999px;
+            background: rgba(219, 39, 119, 0.94);
+            color: #ffffff;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 14px;
+            text-align: center;
+            box-shadow: 0 12px 28px -6px rgba(190, 24, 93, 0.48);
+            backdrop-filter: blur(8px);
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .toast-item.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive tinh chỉnh cho màn hình lớn & điện thoại nhỏ */
+        @media (min-width: 640px) {
+            .glass-card {
+                padding: 34px 36px 36px;
+            }
+            .reader-body {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .clock-bar {
+                padding: 8px 12px;
+                gap: 6px 10px;
+                border-radius: 22px;
+            }
+            .clock-city {
+                display: none;
+            }
+            .glass-card {
+                padding: 22px 16px 24px;
+                border-radius: 26px;
+            }
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                font-size: 15px;
+            }
+            .envelope-container {
+                height: 264px;
+            }
+        }
+
+        ::-webkit-scrollbar { width: 7px; height: 7px; }
+        ::-webkit-scrollbar-track { background: var(--blush-100); }
+        ::-webkit-scrollbar-thumb { background: var(--blush-400); border-radius: 9999px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--berry-500); }
+    </style>
+</head>
+<body>
+
+    <!-- ========================================================================= -->
+    <!-- LỚP NỀN 0: BẢN ĐỒ THẾ GIỚI HỒNG ẨN NHẸ + MŨI TÊN CHẠY 2 ĐẦU NICE ⇄ HÀ NỘI-->
+    <!-- ========================================================================= -->
+    <div id="worldMapBackdrop" class="world-map-layer" aria-hidden="true">
+        <div class="bokeh-orb bokeh-1"></div>
+        <div class="bokeh-orb bokeh-2"></div>
+        <div class="bokeh-orb bokeh-3"></div>
+
+        <!-- Bản đồ thế giới SVG chiếu theo tọa độ địa lý thực tế (Âu - Á - Phi - Úc) -->
+        <svg id="worldMapSvg" viewBox="0 0 1440 820" preserveAspectRatio="xMidYMid slice">
+            <defs>
+                <!-- Gradient hồng rực dịu cho đường mũi tên 2 đầu -->
+                <linearGradient id="loveRouteGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#db2777" />
+                    <stop offset="50%" stop-color="#f472b6" />
+                    <stop offset="100%" stop-color="#db2777" />
+                </linearGradient>
+
+                <!-- Phát sáng mềm quanh đường bay và ghim -->
+                <filter id="pinkRouteGlow" x="-30%" y="-35%" width="160%" height="170%">
+                    <feGaussianBlur stdDeviation="3.5" result="blur" />
+                    <feMerge>
+                        <feMergeNode in="blur" />
+                        <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                </filter>
+
+                <!-- Đầu mũi tên hướng về Nice (đầu bắt đầu) -->
+                <marker id="mapArrowToNice" viewBox="0 0 16 16" refX="4" refY="8" markerWidth="10" markerHeight="10" orient="auto">
+                    <path d="M 13 2.5 L 3.5 8 L 13 13.5" fill="none" stroke="#db2777" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
+                </marker>
+
+                <!-- Đầu mũi tên hướng về Hà Nội (đầu kết thúc) -->
+                <marker id="mapArrowToHanoi" viewBox="0 0 16 16" refX="12" refY="8" markerWidth="10" markerHeight="10" orient="auto">
+                    <path d="M 3 2.5 L 12.5 8 L 3 13.5" fill="none" stroke="#db2777" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
+                </marker>
+            </defs>
+
+            <!-- Tầng lưới kinh vĩ tuyến mờ -->
+            <g id="mapGraticuleLayer"></g>
+
+            <!-- Tầng lục địa & quần đảo hồng phấn -->
+            <g id="mapContinentsLayer"></g>
+
+            <!-- Tầng mũi tên 2 đầu + ghim Nice & Hà Nội + hiệu ứng sóng đích -->
+            <g id="mapLoveRouteLayer" class="map-route-group"></g>
+        </svg>
+    </div>
+
+    <!-- Canvas phía trên nền: cánh hoa rơi dịu nhẹ & chuỗi trái tim bay 2 chiều trên bản đồ -->
+    <canvas id="romanticCanvas"></canvas>
+
+    <!-- ========================================================================= -->
+    <!-- 1. THANH FLOATING PILL BAR: ĐỒNG HỒ HÀ NỘI & NICE + NGẮM BẢN ĐỒ + ÔM     -->
+    <!-- ========================================================================= -->
+    <header class="top-header">
+        <div class="frosted-pill clock-bar">
+            <div class="clock-item">
+                <span class="live-dot"></span>
+                <span class="clock-name">Hải Long</span>
+                <span class="clock-city">• Hà Nội</span>
+                <span id="clockHanoi" class="clock-time">--:--:--</span>
+            </div>
+
+            <span class="clock-arrow" aria-hidden="true">⇄</span>
+
+            <div class="clock-item">
+                <span class="live-dot"></span>
+                <span class="clock-name">Quỳnh Thư</span>
+                <span class="clock-city">• Nice</span>
+                <span id="clockNice" class="clock-time">--:--:--</span>
+            </div>
+
+            <button type="button" id="toggleMapInspectBtn" class="btn-map-toggle">
+                <span id="toggleMapIcon">🗺️</span>
+                <span id="toggleMapText">Ngắm bản đồ</span>
+            </button>
+        </div>
+
+        <!-- Thanh tiện ích gửi cái ôm trực tiếp 2 chiều trên bản đồ -->
+        <div class="frosted-pill quick-hug-bar" aria-label="Gửi cái ôm 2 chiều trên bản đồ">
+            <button type="button" id="quickHugHnToNice" class="btn-quick-hug">
+                <span>💗</span>
+                <span>Ôm Hà Nội → Nice</span>
+            </button>
+            <button type="button" id="quickHugNiceToHn" class="btn-quick-hug">
+                <span>💗</span>
+                <span>Ôm Nice → Hà Nội</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Thanh nổi phía dưới khi đang ở chế độ Ngắm bản đồ -->
+    <div id="mapInspectDock" class="hidden frosted-pill map-inspect-dock">
+        <button type="button" id="dockHugHnToNice" class="btn-quick-hug">💗 Ôm Hà Nội → Nice</button>
+        <button type="button" id="dockHugNiceToHn" class="btn-quick-hug">💗 Ôm Nice → Hà Nội</button>
+        <button type="button" id="exitMapInspectBtn" class="btn-map-toggle">💌 Quay lại lá thư</button>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- 2. NỘI DUNG TRUNG TÂM: SOẠN THƯ 2 CHIỀU & ĐỌC PHONG THƯ 3D 2 CHIỀU        -->
+    <!-- ========================================================================= -->
+    <main id="mainContentWrap">
+
+        <!-- ===================================================== -->
+        <!-- CHẾ ĐỘ 1: SOẠN THƯ 2 CHIỀU (COMPOSER)                 -->
+        <!-- ===================================================== -->
+        <section id="writerSection" class="section-shell animate-reveal">
+            <div class="glass-card">
+                <span class="card-sparkle top-right" aria-hidden="true">✦</span>
+                <span class="card-sparkle bottom-left" aria-hidden="true">♡</span>
+
+                <!-- Bộ chuyển đổi chiều gửi (Segmented Toggle) -->
+                <div class="direction-toggle-wrap">
+                    <div class="segmented-toggle" role="tablist" aria-label="Chọn chiều gửi thư">
+                        <button type="button" id="dirBtnHn2Nice" class="seg-btn active" role="tab" aria-selected="true">
+                            <span class="seg-route">Hà Nội → Nice</span>
+                            <span class="seg-sub">Hải Long gửi Quỳnh Thư</span>
+                        </button>
+                        <button type="button" id="dirBtnNice2Hn" class="seg-btn" role="tab" aria-selected="false">
+                            <span class="seg-route">Nice → Hà Nội</span>
+                            <span class="seg-sub">Quỳnh Thư gửi Hải Long</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tiêu đề động theo chiều gửi -->
+                <div class="composer-head">
+                    <span class="distance-badge">
+                        <span>✈️</span>
+                        <span id="composerRouteBadge">Chuyến bay tình yêu • 9.480 km</span>
+                    </span>
+                    <h1 id="composerHeading" class="composer-title">
+                        Từ Lại Trần Hải Long → Gửi Lưu Quỳnh Thư
+                    </h1>
+                    <p id="composerSubtitle" class="composer-subtitle">
+                        Viết vài dòng yêu thương từ Hà Nội gửi sang Nice, rồi copy link gửi ngay cho em ấy nhé 💌
+                    </p>
+                </div>
+
+                <!-- Badge hiển thị khi đang viết thư hồi âm cho một lá thư trước -->
+                <div id="replyContextBadge" class="hidden reply-context-badge">
+                    <div class="reply-context-text">
+                        <span>↩️ Đang hồi âm cho bức thư:</span>
+                        <strong id="replyContextTitle"></strong>
+                    </div>
+                    <button type="button" id="clearReplyContextBtn" class="reply-clear-btn" title="Bỏ gắn thẻ hồi âm" aria-label="Bỏ gắn thẻ hồi âm">×</button>
+                </div>
+
+                <!-- Form viết thư -->
+                <form id="letterForm" novalidate>
+                    <!-- Tiêu đề thư -->
+                    <div class="form-group">
+                        <div class="field-label-row">
+                            <label for="letterTitleInput" class="field-label">Tiêu đề lá thư</label>
+                        </div>
+                        <input id="letterTitleInput" class="input-title" type="text" maxlength="100"
+                               placeholder="Gửi công chúa nhỏ ở Nice nè...">
+                    </div>
+
+                    <!-- Nội dung thư trên giấy kẻ dòng hồng -->
+                    <div class="form-group">
+                        <div class="field-label-row">
+                            <label for="letterBodyInput" class="field-label">Nội dung bức thư</label>
+                            <span id="wordCountLabel" class="word-count">0 từ</span>
+                        </div>
+                        <div class="paper-frame">
+                            <textarea id="letterBodyInput" class="lined-hand-paper" rows="7" maxlength="4500"
+                                      placeholder="Hôm nay ở Hà Nội trời dịu lắm, anh tự dưng nhớ em ở bên Nice quá chừng..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Tái bút (P.S.) -->
+                    <div class="form-group">
+                        <div class="field-label-row">
+                            <label for="letterPsInput" class="field-label">
+                                Tái bút (P.S.) <span class="field-optional">(không bắt buộc)</span>
+                            </label>
+                        </div>
+                        <input id="letterPsInput" class="input-ps" type="text" maxlength="180"
+                               placeholder="Nhớ giữ ấm và ăn uống đầy đủ nha em...">
+                    </div>
+
+                    <!-- Trạng thái bản nháp & chữ ký cuối thư -->
+                    <div class="composer-meta-row">
+                        <span class="draft-status">
+                            <span class="draft-dot"></span>
+                            <span>Tự lưu nháp riêng từng chiều</span>
+                        </span>
+                        <span id="composerSignPreview" class="composer-sign-preview">Ký tên: Lại Trần Hải Long (Hà Nội)</span>
+                        <button type="button" id="clearDraftBtn" class="btn-text-link">Viết lại</button>
+                    </div>
+
+                    <!-- Hai nút chính -->
+                    <div class="action-row">
+                        <button type="button" id="previewLetterBtn" class="btn-secondary">
+                            <span>👀</span>
+                            <span>Xem trước phong thư</span>
+                        </button>
+                        <button type="submit" id="generateLinkBtn" class="btn-primary">
+                            <span>🔗</span>
+                            <span id="generateLinkBtnText">Tạo link gửi Lưu Quỳnh Thư</span>
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Hộp hiển thị link sau khi tạo -->
+                <div id="shareResultPanel" class="hidden share-panel animate-reveal">
+                    <div class="share-box">
+                        <div class="share-box-head">
+                            <p id="shareBoxTitle" class="share-box-title">
+                                <span>🎀</span>
+                                <span>Link phong thư đã sẵn sàng!</span>
+                            </p>
+                            <span id="copiedStatusBadge" class="copied-pill">Đã sao chép ✓</span>
+                        </div>
+
+                        <div class="share-url-row">
+                            <input id="shareUrlOutput" class="share-url-input" type="text" readonly
+                                   aria-label="Đường dẫn bức thư để gửi cho người ấy">
+                        </div>
+
+                        <div class="share-btn-group">
+                            <button type="button" id="copyLinkAgainBtn" class="btn-small-berry">
+                                <span>📋</span>
+                                <span>Sao chép link</span>
+                            </button>
+                            <button type="button" id="openGeneratedLinkBtn" class="btn-small-outline">
+                                <span>💌</span>
+                                <span>Mở thử link ngay</span>
+                            </button>
+                        </div>
+
+                        <p id="shareHintText" class="share-hint"></p>
+
+                        <!-- Ghi chú thân thiện khi đang mở dưới dạng file:// hoặc sandbox preview -->
+                        <div id="localDeployNote" class="hidden local-deploy-note">
+                            💡 <strong>Mẹo nhỏ để gửi qua Messenger/Zalo:</strong> Hiện bạn đang mở trang dưới dạng tệp nội bộ hoặc khung xem trước. Chỉ cần tải tệp HTML này lên <strong>Netlify Drop</strong>, <strong>GitHub Pages</strong> hoặc <strong>Vercel</strong> (miễn phí 100%), đường link tạo ra sẽ tự động mang tên miền thật để người ấy bấm vào đọc và viết thư ngược lại cho bạn ngay trên điện thoại!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================== -->
+        <!-- CHẾ ĐỘ 2: PHONG BÌ 3D & ĐỌC THƯ 2 CHIỀU (READER)      -->
+        <!-- ===================================================== -->
+        <section id="readerSection" class="hidden section-shell">
+
+            <!-- BƯỚC A: PHONG BÌ 3D MÀU HỒNG NIÊM PHONG DẤU SÁP -->
+            <div id="sealedEnvelopeView" class="envelope-view animate-reveal">
+                <div class="frosted-pill flight-banner-pill">
+                    <span>✈️</span>
+                    <span id="envelopeFlightBanner">Có một lá thư vừa bay 9.480 km từ Hà Nội đến Nice nè!</span>
+                </div>
+
+                <div class="envelope-stage">
+                    <div id="interactiveEnvelope" class="envelope-container animate-float-envelope"
+                         role="button" tabindex="0" aria-label="Chạm vào phong thư để mở">
+                        <div class="envelope-back"></div>
+
+                        <!-- Tờ thư trượt lên khi mở -->
+                        <div class="envelope-paper-slip">
+                            <span style="font-size: 18px;">💗</span>
+                            <p id="envelopePeekTitle" class="envelope-peek-title"></p>
+                            <p id="envelopePeekRoute" style="margin: 6px 0 0; font-family: var(--font-hand); font-size: 12.5px; color: var(--ink-muted);">Hà Nội ⇄ Nice</p>
+                        </div>
+
+                        <!-- Mặt trước phong bì -->
+                        <div class="envelope-pocket"></div>
+
+                        <!-- Địa chỉ chiều bay trên phong bì -->
+                        <div class="envelope-address-overlay">
+                            <div class="envelope-address-card">
+                                <p id="envelopeRouteLine" class="envelope-route-line">Từ Hà Nội, Việt Nam ✈️ Nice, Pháp</p>
+                                <p id="envelopePeopleLine" class="envelope-people-line">
+                                    <strong>Lại Trần Hải Long</strong> gửi <strong>Lưu Quỳnh Thư</strong>
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Nắp phong bì gập 3D -->
+                        <div class="envelope-flap"></div>
+
+                        <!-- Dấu sáp hồng L ♥ T hoặc T ♥ L -->
+                        <div class="wax-seal-btn" aria-hidden="true">
+                            <span id="waxSealText" class="wax-seal-text">L ♥ T</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="envelope-prompt-wrap">
+                    <button type="button" id="openEnvelopePromptBtn" class="frosted-pill btn-open-prompt">
+                        <span>💌</span>
+                        <span>Chạm vào phong thư để mở nhé</span>
+                    </button>
+
+                    <button type="button" id="backFromEnvelopeBtn" class="hidden btn-text-link">
+                        ← Quay lại chỉnh sửa
+                    </button>
+                </div>
+            </div>
+
+            <!-- BƯỚC B: LÁ THƯ ĐÃ MỞ -->
+            <div id="openedLetterView" class="hidden animate-reveal">
+                <article class="glass-card">
+                    <span class="card-sparkle top-right" aria-hidden="true">✦</span>
+                    <span class="card-sparkle bottom-left" aria-hidden="true">♡</span>
+
+                    <!-- Ngày viết & tuyến đường -->
+                    <div class="reader-top-meta">
+                        <span id="readerDateText" class="reader-date">Hà Nội, hôm nay</span>
+                        <span id="readerRoutePill" class="reader-route-pill">Hà Nội ✈️ Nice</span>
+                    </div>
+
+                    <!-- Thẻ hồi âm (nếu đây là bức thư trả lời) -->
+                    <div id="readerReplyPill" class="hidden reader-reply-pill">
+                        <span>↩️ Hồi âm cho bức thư:</span>
+                        <strong id="readerReplyTitle"></strong>
+                    </div>
+
+                    <!-- Tiêu đề bức thư -->
+                    <h2 id="readerTitleText" class="reader-title"></h2>
+
+                    <!-- Nội dung bức thư bằng font viết tay Mali -->
+                    <div id="readerBodyText" class="reader-body"></div>
+
+                    <!-- Tái bút P.S. -->
+                    <div id="readerPsContainer" class="hidden reader-ps">
+                        <span class="reader-ps-tag">P.S.</span>
+                        <span id="readerPsText"></span>
+                    </div>
+
+                    <!-- Chữ ký động theo người gửi -->
+                    <div class="reader-signature">
+                        <p id="readerSignClosing" class="sign-closing">Thương em thật nhiều,</p>
+                        <p id="readerSignName" class="sign-name">Lại Trần Hải Long</p>
+                        <p id="readerSignPlace" class="sign-place">Hà Nội • Việt Nam</p>
+                    </div>
+
+                    <!-- Cụm hành động 2 chiều: Gửi cái ôm ngược lại + Viết thư hồi âm -->
+                    <div class="reader-actions-block">
+                        <button type="button" id="readerSendHugBtn" class="btn-primary">
+                            <span>🤗</span>
+                            <span id="readerSendHugText">Gửi một cái ôm từ Nice về Hà Nội 💗</span>
+                        </button>
+
+                        <p id="hugCounterText" class="hidden hug-feedback"></p>
+
+                        <div class="reader-sub-actions">
+                            <button type="button" id="writeReplyLetterBtn" class="btn-secondary">
+                                <span>✍️</span>
+                                <span id="writeReplyLetterText">Viết thư hồi âm gửi Lại Trần Hải Long</span>
+                            </button>
+
+                            <button type="button" id="watchHugOnMapBtn" class="btn-small-outline">
+                                <span>🗺️</span>
+                                <span>Xem cái ôm bay trên bản đồ</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Thanh điều khiển khi đang ở chế độ Xem trước -->
+                <div id="previewControlsBar" class="hidden preview-controls">
+                    <button type="button" id="backToEditBtn" class="frosted-pill btn-small-outline">
+                        ← Quay lại chỉnh sửa
+                    </button>
+                    <button type="button" id="copyFromPreviewBtn" class="btn-small-berry">
+                        🔗 Tạo & sao chép link gửi ngay
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Hộp thông báo Toast (không dùng alert/confirm) -->
+    <div id="toastStack" class="toast-stack" aria-live="polite"></div>
+
+    <!-- ========================================================================= -->
+    <!-- JAVASCRIPT THUẦN: BẢN ĐỒ SVG, MŨI TÊN 2 CHIỀU, ÔM 2 CHIỀU & THƯ 2 CHIỀU   -->
+    <!-- ========================================================================= -->
+    <script>
+        (function () {
+            'use strict';
+
+            // =========================================================================
+            // 1. CẤU HÌNH 2 CHIỀU: HÀ NỘI (HẢI LONG) ⇄ NICE (QUỲNH THƯ)
+            // =========================================================================
+            const DIRECTIONS = {
+                hn2nice: {
+                    code: 'hn2nice',
+                    opposite: 'nice2hn',
+                    senderName: 'Lại Trần Hải Long',
+                    senderShort: 'Hải Long',
+                    senderCity: 'Hà Nội',
+                    senderLocationFull: 'Hà Nội, Việt Nam',
+                    senderPlaceStamp: 'Hà Nội • Việt Nam',
+                    receiverName: 'Lưu Quỳnh Thư',
+                    receiverShort: 'Quỳnh Thư',
+                    receiverCity: 'Nice',
+                    receiverLocationFull: 'Nice, Pháp',
+                    waxSeal: 'L ♥ T',
+                    composerHeading: 'Từ Lại Trần Hải Long → Gửi Lưu Quỳnh Thư',
+                    composerSubtitle: 'Viết vài dòng yêu thương từ Hà Nội gửi sang Nice, rồi copy link gửi ngay cho em ấy nhé 💌',
+                    titlePlaceholder: 'Gửi công chúa nhỏ ở Nice nè...',
+                    bodyPlaceholder: 'Hôm nay ở Hà Nội trời dịu lắm, anh tự dưng nhớ em ở bên Nice quá chừng...',
+                    psPlaceholder: 'Nhớ giữ ấm và ăn uống đầy đủ nha em...',
+                    closingLine: 'Thương em thật nhiều,',
+                    generateBtnLabel: 'Tạo link gửi Lưu Quỳnh Thư',
+                    envelopeBanner: 'Có một lá thư vừa bay 9.480 km từ Hà Nội đến Nice nè!',
+                    envelopeRouteLine: 'Từ Hà Nội, Việt Nam ✈️ Nice, Pháp',
+                    readerRoutePill: 'Hà Nội ✈️ Nice',
+                    replyHugDir: 'nice2hn',
+                    replyHugBtnText: 'Gửi một cái ôm từ Nice về Hà Nội 💗',
+                    replyLetterBtnText: 'Viết thư hồi âm gửi Lại Trần Hải Long',
+                    defaultTitle: 'Gửi cô gái nhỏ ở Nice thương yêu!',
+                    defaultBody: 'Anh nhớ em nhiều lắm!'
+                },
+                nice2hn: {
+                    code: 'nice2hn',
+                    opposite: 'hn2nice',
+                    senderName: 'Lưu Quỳnh Thư',
+                    senderShort: 'Quỳnh Thư',
+                    senderCity: 'Nice',
+                    senderLocationFull: 'Nice, Pháp',
+                    senderPlaceStamp: 'Nice • Pháp',
+                    receiverName: 'Lại Trần Hải Long',
+                    receiverShort: 'Hải Long',
+                    receiverCity: 'Hà Nội',
+                    receiverLocationFull: 'Hà Nội, Việt Nam',
+                    waxSeal: 'T ♥ L',
+                    composerHeading: 'Từ Lưu Quỳnh Thư → Gửi Lại Trần Hải Long',
+                    composerSubtitle: 'Viết vài dòng ngọt ngào từ Nice gửi về Hà Nội, rồi copy link gửi ngay cho anh ấy nhé 💌',
+                    titlePlaceholder: 'Gửi anh người yêu ở Hà Nội nè...',
+                    bodyPlaceholder: 'Bên Nice hôm nay nắng đẹp lắm, em lại nhớ những lúc mình nói chuyện cùng nhau...',
+                    psPlaceholder: 'Ở Hà Nội nhớ đi ngủ sớm đừng thức khuya nha anh...',
+                    closingLine: 'Thương anh thật nhiều,',
+                    generateBtnLabel: 'Tạo link gửi Lại Trần Hải Long',
+                    envelopeBanner: 'Có một lá thư vừa bay 9.480 km từ Nice về Hà Nội nè!',
+                    envelopeRouteLine: 'Từ Nice, Pháp ✈️ Hà Nội, Việt Nam',
+                    readerRoutePill: 'Nice ✈️ Hà Nội',
+                    replyHugDir: 'hn2nice',
+                    replyHugBtnText: 'Gửi một cái ôm từ Hà Nội sang Nice 💗',
+                    replyLetterBtnText: 'Viết thư hồi âm gửi Lưu Quỳnh Thư',
+                    defaultTitle: 'Gửi anh ở Hà Nội thương yêu!',
+                    defaultBody: 'Em nhớ anh nhiều lắm!'
+                }
+            };
+
+            function getDirMeta(code) {
+                return code === 'nice2hn' ? DIRECTIONS.nice2hn : DIRECTIONS.hn2nice;
+            }
+
+            // =========================================================================
+            // 2. BẢN ĐỒ THẾ GIỚI SVG CHUẨN TỌA ĐỘ ĐỊA LÝ THỰC (ÂU - Á - PHI - ÚC)
+            // =========================================================================
+            const MAP_WIDTH = 1440;
+            const MAP_HEIGHT = 820;
+            const LON_MIN = -22;
+            const LON_MAX = 152;
+            const LAT_MAX = 70;
+            const LAT_MIN = -22;
+
+            // Tọa độ địa lý thực tế
+            const COORD_NICE = [7.26, 43.70];    // Nice, Pháp (7.26°E, 43.70°N)
+            const COORD_HANOI = [105.85, 21.03]; // Hà Nội, Việt Nam (105.85°E, 21.03°N)
+
+            function projectGeo(lon, lat) {
+                const x = ((lon - LON_MIN) / (LON_MAX - LON_MIN)) * MAP_WIDTH;
+                const y = ((LAT_MAX - lat) / (LAT_MAX - LAT_MIN)) * MAP_HEIGHT;
+                return [x, y];
+            }
+
+            function coordsToSvgPath(coords) {
+                if (!coords || coords.length < 3) return '';
+                let d = '';
+                for (let i = 0; i < coords.length; i++) {
+                    const [x, y] = projectGeo(coords[i][0], coords[i][1]);
+                    d += (i === 0 ? 'M' : 'L') + x.toFixed(1) + ',' + y.toFixed(1) + ' ';
+                }
+                return d + 'Z';
+            }
+
+            const WORLD_LANDMASSES = [
+                // 1. Lục địa Âu - Á
+                [
+                    [-9.3, 38.7], [-9.2, 42.9], [-2.0, 43.4], [-4.5, 48.4], [1.6, 51.0],
+                    [4.8, 53.0], [8.6, 54.0], [8.5, 57.1], [10.8, 57.7], [12.5, 55.6],
+                    [10.7, 59.9], [5.2, 60.4], [10.0, 64.0], [18.5, 69.5], [29.5, 70.5],
+                    [40.0, 67.0], [50.0, 68.5], [68.0, 70.5], [88.0, 71.0], [108.0, 71.5],
+                    [135.0, 71.0], [154.0, 68.0], [154.0, 58.0], [142.0, 54.0], [136.0, 44.5],
+                    [130.5, 42.3], [129.2, 35.1], [126.3, 34.5], [126.6, 37.6], [124.2, 39.8],
+                    [121.6, 38.9], [118.0, 39.0], [122.4, 37.2], [119.5, 34.5], [121.8, 31.2],
+                    [121.4, 28.0], [118.2, 24.4], [114.2, 22.3], [110.2, 20.2], [108.0, 21.5],
+                    [106.7, 20.8], [105.9, 19.6], [108.3, 16.0], [109.3, 12.8], [107.0, 10.3],
+                    [104.8, 8.7], [103.5, 10.6], [100.5, 13.5], [99.8, 9.2], [103.8, 1.4],
+                    [100.3, 5.4], [98.3, 10.0], [97.4, 16.5], [94.3, 16.0], [92.2, 21.2],
+                    [89.0, 22.1], [85.8, 19.8], [80.3, 13.1], [77.5, 8.1], [74.8, 12.8],
+                    [72.8, 19.0], [69.0, 22.3], [67.0, 24.8], [61.5, 25.2], [56.4, 27.1],
+                    [50.2, 29.5], [48.5, 29.8], [50.8, 26.0], [56.3, 25.3], [59.8, 22.5],
+                    [53.0, 16.5], [44.2, 12.7], [43.3, 13.5], [39.2, 21.5], [35.0, 29.3],
+                    [32.5, 31.2], [35.8, 36.2], [30.7, 36.8], [26.4, 38.4], [26.8, 40.3],
+                    [29.0, 41.2], [35.5, 42.0], [41.5, 41.8], [39.0, 44.5], [33.5, 44.6],
+                    [30.5, 46.2], [28.0, 42.0], [26.0, 40.6], [23.8, 37.9], [22.0, 36.8],
+                    [19.5, 40.5], [13.7, 45.6], [12.3, 45.4], [14.0, 42.6], [18.4, 40.2],
+                    [15.8, 38.0], [13.8, 41.2], [10.4, 43.8], [8.9, 44.4], [7.26, 43.7],
+                    [5.3, 43.3], [3.2, 42.5], [2.2, 41.4], [-0.4, 38.3], [-5.4, 36.0],
+                    [-8.9, 37.0]
+                ],
+                // 2. Châu Phi
+                [
+                    [-5.8, 35.8], [3.1, 36.8], [10.3, 37.2], [11.5, 33.2], [15.2, 32.4],
+                    [20.2, 32.8], [25.2, 31.6], [32.3, 31.3], [34.5, 27.8], [37.2, 21.5],
+                    [43.2, 12.5], [51.2, 11.8], [48.0, 5.2], [41.5, -1.5], [39.5, -6.8],
+                    [40.6, -14.8], [35.0, -19.8], [32.8, -26.0], [28.0, -33.0], [18.4, -34.2],
+                    [14.5, -23.0], [12.2, -15.5], [12.0, -6.0], [9.3, 0.8], [9.5, 4.0],
+                    [3.4, 6.4], [-4.0, 5.2], [-7.8, 4.4], [-13.5, 9.5], [-17.4, 14.7],
+                    [-16.2, 21.0], [-13.0, 27.8], [-9.6, 30.4]
+                ],
+                // 3. Vương quốc Anh & Ireland & Iceland
+                [[-5.5, 50.1], [-3.0, 51.4], [-5.0, 52.0], [-3.2, 53.4], [-4.8, 55.2], [-5.5, 58.5], [-2.0, 57.6], [-2.2, 55.6], [0.2, 53.5], [1.7, 52.5], [1.3, 51.1], [-2.0, 50.6]],
+                [[-10.2, 51.8], [-9.5, 53.8], [-7.5, 55.2], [-5.6, 54.5], [-6.1, 52.3]],
+                [[-24.0, 64.0], [-22.0, 66.2], [-15.0, 66.3], [-13.6, 64.8], [-19.0, 63.5]],
+                // 4. Corsica, Sardinia, Sicily, Madagascar, Sri Lanka
+                [[8.6, 42.8], [9.5, 42.9], [9.3, 41.4], [8.8, 41.5]],
+                [[8.3, 40.9], [9.6, 41.1], [9.7, 39.2], [8.5, 39.0]],
+                [[12.5, 37.9], [15.5, 38.2], [15.1, 36.7], [13.5, 37.2]],
+                [[49.3, -12.1], [50.4, -15.6], [47.2, -25.0], [43.9, -25.1], [44.2, -19.8], [47.0, -15.5]],
+                [[80.0, 9.7], [81.8, 7.6], [80.6, 6.0], [79.8, 7.5]],
+                // 5. Hải Nam, Đài Loan, Nhật Bản, Philippines
+                [[108.7, 19.2], [110.8, 20.0], [110.5, 18.4], [109.0, 18.3]],
+                [[121.6, 25.2], [121.9, 24.0], [120.8, 22.0], [120.1, 23.2]],
+                [[130.5, 31.2], [131.8, 33.5], [135.5, 33.8], [139.8, 35.5], [141.5, 38.5], [141.4, 41.3], [139.8, 40.5], [137.0, 36.8], [132.0, 34.8], [129.8, 33.0]],
+                [[140.2, 41.8], [141.8, 45.4], [145.4, 43.3], [143.2, 42.0]],
+                [[120.2, 18.4], [122.4, 18.2], [123.6, 13.5], [121.0, 13.7], [119.9, 15.8]],
+                [[122.0, 7.2], [125.6, 9.5], [126.4, 6.8], [124.2, 6.2]],
+                // 6. Indonesia, Papua New Guinea, Châu Úc
+                [[95.3, 5.5], [99.5, 3.2], [104.5, -1.5], [105.8, -5.8], [103.5, -5.0], [98.5, 0.8]],
+                [[105.5, -6.2], [114.4, -7.8], [114.0, -8.7], [106.2, -7.2]],
+                [[109.2, 1.5], [117.6, 6.8], [118.8, 1.2], [116.2, -3.5], [111.5, -3.2], [109.0, -1.0]],
+                [[119.0, -5.4], [120.4, -2.5], [125.0, 1.4], [121.8, -0.5], [122.6, -4.8]],
+                [[131.0, -1.5], [136.5, -2.2], [141.0, -2.8], [147.8, -6.6], [150.5, -10.2], [143.2, -8.5], [138.0, -6.2], [133.5, -3.5]],
+                [[114.2, -21.8], [122.2, -17.8], [130.8, -12.4], [136.8, -12.3], [136.2, -15.5], [141.5, -16.5], [142.5, -10.8], [146.0, -17.5], [153.2, -26.0], [151.2, -33.8], [146.5, -38.8], [138.5, -35.5], [131.0, -31.8], [122.0, -34.0], [115.2, -34.2], [113.5, -26.2]]
+            ];
+
+            let routeGeom = null;
+
+            function buildWorldMapSvg() {
+                const graticuleG = document.getElementById('mapGraticuleLayer');
+                const continentsG = document.getElementById('mapContinentsLayer');
+                const routeG = document.getElementById('mapLoveRouteLayer');
+                const NS = 'http://www.w3.org/2000/svg';
+
+                graticuleG.innerHTML = '';
+                continentsG.innerHTML = '';
+                routeG.innerHTML = '';
+
+                // Lưới kinh vĩ tuyến mờ
+                for (let lon = -15; lon <= 150; lon += 15) {
+                    const [x1, y1] = projectGeo(lon, LAT_MAX);
+                    const [x2, y2] = projectGeo(lon, LAT_MIN);
+                    const line = document.createElementNS(NS, 'line');
+                    line.setAttribute('x1', x1.toFixed(1));
+                    line.setAttribute('y1', y1.toFixed(1));
+                    line.setAttribute('x2', x2.toFixed(1));
+                    line.setAttribute('y2', y2.toFixed(1));
+                    line.setAttribute('class', 'map-graticule');
+                    graticuleG.appendChild(line);
+                }
+                for (let lat = -15; lat <= 60; lat += 15) {
+                    const [x1, y1] = projectGeo(LON_MIN, lat);
+                    const [x2, y2] = projectGeo(LON_MAX, lat);
+                    const line = document.createElementNS(NS, 'line');
+                    line.setAttribute('x1', x1.toFixed(1));
+                    line.setAttribute('y1', y1.toFixed(1));
+                    line.setAttribute('x2', x2.toFixed(1));
+                    line.setAttribute('y2', y2.toFixed(1));
+                    line.setAttribute('class', 'map-graticule');
+                    graticuleG.appendChild(line);
+                }
+
+                // Các lục địa
+                WORLD_LANDMASSES.forEach((poly) => {
+                    const p = document.createElementNS(NS, 'path');
+                    p.setAttribute('d', coordsToSvgPath(poly));
+                    p.setAttribute('class', 'map-landmass');
+                    continentsG.appendChild(p);
+                });
+
+                // Tính điểm Nice & Hà Nội
+                const [nx, ny] = projectGeo(COORD_NICE[0], COORD_NICE[1]);
+                const [hx, hy] = projectGeo(COORD_HANOI[0], COORD_HANOI[1]);
+
+                // Đường cong vắt mềm qua Á - Âu
+                const cx = (nx + hx) * 0.5 + 32;
+                const cy = Math.min(ny, hy) - 165;
+
+                // Điểm đỉnh cong (t = 0.5)
+                const peakX = 0.25 * nx + 0.5 * cx + 0.25 * hx;
+                const peakY = 0.25 * ny + 0.5 * cy + 0.25 * hy;
+
+                function trimEnd(p0x, p0y, cpx, cpy, trimPx) {
+                    const dx = cpx - p0x;
+                    const dy = cpy - p0y;
+                    const len = Math.hypot(dx, dy) || 1;
+                    return [p0x + (dx / len) * trimPx, p0y + (dy / len) * trimPx];
+                }
+                const [sX, sY] = trimEnd(nx, ny, cx, cy, 17);
+                const [eX, eY] = trimEnd(hx, hy, cx, cy, 17);
+
+                routeGeom = { nx, ny, hx, hy, cx, cy, sX, sY, eX, eY, peakX, peakY };
+                const arcD = `M ${sX.toFixed(1)} ${sY.toFixed(1)} Q ${cx.toFixed(1)} ${cy.toFixed(1)} ${eX.toFixed(1)} ${eY.toFixed(1)}`;
+
+                // Hào quang đường cung
+                const glowPath = document.createElementNS(NS, 'path');
+                glowPath.setAttribute('d', arcD);
+                glowPath.setAttribute('fill', 'none');
+                glowPath.setAttribute('stroke', 'rgba(244, 114, 182, 0.35)');
+                glowPath.setAttribute('stroke-width', '8');
+                glowPath.setAttribute('stroke-linecap', 'round');
+                glowPath.setAttribute('filter', 'url(#pinkRouteGlow)');
+                routeG.appendChild(glowPath);
+
+                // Đường mũi tên chỉ 2 đầu (Nice ⇄ Hà Nội)
+                const mainArc = document.createElementNS(NS, 'path');
+                mainArc.setAttribute('d', arcD);
+                mainArc.setAttribute('fill', 'none');
+                mainArc.setAttribute('stroke', 'url(#loveRouteGrad)');
+                mainArc.setAttribute('stroke-width', '3.1');
+                mainArc.setAttribute('stroke-dasharray', '9 7');
+                mainArc.setAttribute('stroke-linecap', 'round');
+                mainArc.setAttribute('marker-start', 'url(#mapArrowToNice)');
+                mainArc.setAttribute('marker-end', 'url(#mapArrowToHanoi)');
+                mainArc.setAttribute('class', 'route-dash-animated');
+                routeG.appendChild(mainArc);
+
+                // Nhãn khoảng cách 9.480 km
+                const distGroup = document.createElementNS(NS, 'g');
+                distGroup.setAttribute('transform', `translate(${peakX.toFixed(1)}, ${(peakY - 26).toFixed(1)})`);
+                distGroup.innerHTML = `
+                    <rect x="-82" y="-15" width="164" height="30" rx="15"
+                          fill="rgba(255, 255, 255, 0.84)" stroke="rgba(244, 114, 182, 0.62)" stroke-width="1.2"/>
+                    <text x="0" y="5" text-anchor="middle"
+                          font-family="'Baloo 2', sans-serif" font-weight="700" font-size="13.5" fill="#be185d">
+                        ✈ 9.480 km • Nice ⇄ Hà Nội
+                    </text>
+                `;
+                routeG.appendChild(distGroup);
+
+                // Tầng chứa vòng sóng impact khi cái ôm chạm đích
+                const impactLayer = document.createElementNS(NS, 'g');
+                impactLayer.setAttribute('id', 'mapImpactWaveLayer');
+                routeG.appendChild(impactLayer);
+
+                // Ghim Nice & Hà Nội
+                function appendCityPin({ id, x, y, city, person, align }) {
+                    const g = document.createElementNS(NS, 'g');
+                    g.setAttribute('id', id);
+                    g.setAttribute('transform', `translate(${x.toFixed(1)}, ${y.toFixed(1)})`);
+
+                    const boxX = align === 'left' ? -184 : 12;
+                    const textX = align === 'left' ? boxX + 170 : boxX + 14;
+                    const anchor = align === 'left' ? 'end' : 'start';
+
+                    g.innerHTML = `
+                        <circle cx="0" cy="0" r="8" fill="none" stroke="#ec4899" class="radar-ring-1"/>
+                        <circle cx="0" cy="0" r="8" fill="none" stroke="#f472b6" class="radar-ring-2"/>
+                        <circle cx="0" cy="0" r="10.5" fill="rgba(255, 255, 255, 0.92)" stroke="#db2777" stroke-width="2.3" filter="url(#pinkRouteGlow)"/>
+                        <path d="M0 4.6 C-0.7 3.9 -5.4 0.7 -5.4 -1.9 C-5.4 -3.7 -3.8 -5.0 -2.1 -5.0 C-1.0 -5.0 -0.3 -4.3 0 -3.5 C0.3 -4.3 1.0 -5.0 2.1 -5.0 C3.8 -5.0 5.4 -3.7 5.4 -1.9 C5.4 0.7 0.7 3.9 0 4.6 Z"
+                              fill="#db2777"/>
+                        <g transform="translate(0, 20)">
+                            <rect x="${boxX}" y="-11" width="184" height="45" rx="14"
+                                  fill="rgba(255, 255, 255, 0.80)" stroke="rgba(249, 168, 212, 0.76)" stroke-width="1.2"/>
+                            <text x="${textX}" y="7" text-anchor="${anchor}"
+                                  font-family="'Be Vietnam Pro', sans-serif" font-weight="600" font-size="11.5" fill="#7a3b5a">
+                                ${city}
+                            </text>
+                            <text x="${textX}" y="25" text-anchor="${anchor}"
+                                  font-family="'Baloo 2', sans-serif" font-weight="800" font-size="14.5" fill="#db2777">
+                                ${person}
+                            </text>
+                        </g>
+                    `;
+                    routeG.appendChild(g);
+                }
+
+                appendCityPin({
+                    id: 'mapNicePin',
+                    x: nx,
+                    y: ny,
+                    city: 'Nice, Pháp 🇫🇷',
+                    person: 'Lưu Quỳnh Thư',
+                    align: 'left'
+                });
+
+                appendCityPin({
+                    id: 'mapHanoiPin',
+                    x: hx,
+                    y: hy,
+                    city: 'Hà Nội, Việt Nam 🇻🇳',
+                    person: 'Lại Trần Hải Long',
+                    align: 'right'
+                });
+
+                // Trái tim nhỏ bay qua lại liên tục trên đường cung
+                const traveler = document.createElementNS(NS, 'g');
+                traveler.setAttribute('id', 'mapTravelerIcon');
+                traveler.innerHTML = `
+                    <circle r="13" fill="rgba(244, 114, 182, 0.30)" filter="url(#pinkRouteGlow)"></circle>
+                    <circle r="8.5" fill="#ffffff" stroke="#ec4899" stroke-width="1.8"></circle>
+                    <path d="M0 4.2 C-0.6 3.5 -4.8 0.6 -4.8 -1.6 C-4.8 -3.3 -3.4 -4.4 -1.9 -4.4 C-0.9 -4.4 -0.2 -3.8 0 -3.1 C0.2 -3.8 0.9 -4.4 1.9 -4.4 C3.4 -4.4 4.8 -3.3 4.8 -1.6 C4.8 0.6 0.6 3.5 0 4.2 Z"
+                          fill="#db2777"/>
+                `;
+                routeG.appendChild(traveler);
+            }
+
+            /**
+             * Điều chỉnh viewBox tự động theo kích thước màn hình (Desktop & Mobile)
+             */
+            function updateResponsiveMapViewBox() {
+                const svg = document.getElementById('worldMapSvg');
+                if (!svg || !routeGeom) return;
+
+                const vw = window.innerWidth;
+                const vh = window.innerHeight;
+                const aspect = vw / Math.max(vh, 1);
+
+                if (vw < 820) {
+                    svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+                    const targetWidth = 1220;
+                    const targetHeight = Math.max(720, targetWidth / Math.max(aspect, 0.48));
+                    const centerX = (routeGeom.nx + routeGeom.hx) * 0.5;
+                    const centerY = (routeGeom.ny + routeGeom.hy) * 0.5 - 15;
+                    const vbX = Math.max(-40, centerX - targetWidth / 2);
+                    const vbY = Math.max(-50, centerY - targetHeight / 2);
+                    svg.setAttribute('viewBox', `${vbX.toFixed(0)} ${vbY.toFixed(0)} ${targetWidth.toFixed(0)} ${targetHeight.toFixed(0)}`);
+                } else {
+                    svg.setAttribute('preserveAspectRatio', 'xMidYMid slice');
+                    svg.setAttribute('viewBox', `0 0 ${MAP_WIDTH} ${MAP_HEIGHT}`);
+                }
+            }
+
+            /**
+             * Lấy tọa độ SVG trên đường cung Bezier bậc 2 tại t ∈ [0, 1]
+             * Quy ước: t = 0 là Nice (Pháp), t = 1 là Hà Nội (Việt Nam)
+             */
+            function sampleRoutePointSvg(t) {
+                const inv = 1 - t;
+                const x = inv * inv * routeGeom.nx + 2 * inv * t * routeGeom.cx + t * t * routeGeom.hx;
+                const y = inv * inv * routeGeom.ny + 2 * inv * t * routeGeom.cy + t * t * routeGeom.hy;
+                return { x, y };
+            }
+
+            /**
+             * Quy đổi tọa độ SVG sang tọa độ pixel thực tế trên màn hình
+             */
+            function svgPointToScreen(svgX, svgY) {
+                const svg = document.getElementById('worldMapSvg');
+                if (!svg || typeof svg.createSVGPoint !== 'function') {
+                    return { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+                }
+                const ctm = svg.getScreenCTM();
+                if (!ctm) {
+                    return { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+                }
+                const pt = svg.createSVGPoint();
+                pt.x = svgX;
+                pt.y = svgY;
+                const screenPt = pt.matrixTransform(ctm);
+                return { x: screenPt.x, y: screenPt.y };
+            }
+
+            /**
+             * Kích hoạt vòng sóng lan tỏa hồng rực tại tọa độ SVG đích trên bản đồ
+             */
+            function spawnSvgImpactRipple(svgX, svgY) {
+                const layer = document.getElementById('mapImpactWaveLayer');
+                if (!layer) return;
+                const NS = 'http://www.w3.org/2000/svg';
+
+                [0, 220].forEach((delay) => {
+                    setTimeout(() => {
+                        const c = document.createElementNS(NS, 'circle');
+                        c.setAttribute('cx', svgX.toFixed(1));
+                        c.setAttribute('cy', svgY.toFixed(1));
+                        c.setAttribute('r', '10');
+                        c.setAttribute('fill', 'none');
+                        c.setAttribute('stroke', delay === 0 ? '#db2777' : '#f472b6');
+                        c.setAttribute('class', 'hug-impact-ring');
+                        layer.appendChild(c);
+                        setTimeout(() => c.remove(), 1250);
+                    }, delay);
+                });
+            }
+
+            // Vòng lặp trái tim bay qua lại nhẹ nhàng giữa 2 đầu mũi tên
+            let travelerStart = null;
+            function animateMapTraveler(ts) {
+                if (!travelerStart) travelerStart = ts;
+                const cycleMs = 7600;
+                const phase = ((ts - travelerStart) % cycleMs) / cycleMs;
+                const smooth = 0.5 - 0.5 * Math.cos(phase * Math.PI * 2);
+
+                const icon = document.getElementById('mapTravelerIcon');
+                if (icon && routeGeom) {
+                    const t = 0.04 + smooth * 0.92;
+                    const pt = sampleRoutePointSvg(t);
+                    const scale = 0.94 + 0.14 * Math.sin(phase * Math.PI * 4);
+                    icon.setAttribute('transform', `translate(${pt.x.toFixed(1)}, ${pt.y.toFixed(1)}) scale(${scale.toFixed(2)})`);
+                }
+                requestAnimationFrame(animateMapTraveler);
+            }
+
+            // =========================================================================
+            // 3. CANVAS HIỆU ỨNG: CÁNH HOA RƠI & HÀM GỬI CÁI ÔM 2 CHIỀU sendHug(dir)
+            // =========================================================================
+            const canvas = document.getElementById('romanticCanvas');
+            const ctx = canvas.getContext('2d');
+            let cw = window.innerWidth;
+            let ch = window.innerHeight;
+            let ambientPetals = [];
+            let effectParticles = [];
+            let hugWatchTimer = null;
+
+            function resizeCanvas() {
+                cw = window.innerWidth;
+                ch = window.innerHeight;
+                const dpr = Math.min(window.devicePixelRatio || 1, 2);
+                canvas.width = cw * dpr;
+                canvas.height = ch * dpr;
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            }
+
+            function createPetal(randomY) {
+                const palette = ['#f9a8d4', '#fbcfe8', '#f472b6', '#fda4af'];
+                return {
+                    x: Math.random() * cw,
+                    y: randomY ? Math.random() * ch : -18,
+                    size: 5 + Math.random() * 6,
+                    vy: 0.34 + Math.random() * 0.52,
+                    vx: (Math.random() - 0.5) * 0.32,
+                    sway: 0.28 + Math.random() * 0.48,
+                    swaySpeed: 0.012 + Math.random() * 0.012,
+                    tick: Math.random() * 100,
+                    angle: Math.random() * Math.PI * 2,
+                    spin: (Math.random() - 0.5) * 0.02,
+                    alpha: 0.24 + Math.random() * 0.28,
+                    color: palette[Math.floor(Math.random() * palette.length)],
+                    isHeart: Math.random() < 0.4
+                };
+            }
+
+            function initAmbientPetals() {
+                ambientPetals = [];
+                const count = cw < 640 ? 14 : 22;
+                for (let i = 0; i < count; i++) {
+                    ambientPetals.push(createPetal(true));
+                }
+            }
+
+            function drawHeart(context, size) {
+                context.beginPath();
+                const top = size * 0.3;
+                context.moveTo(0, top);
+                context.bezierCurveTo(0, 0, -size / 2, 0, -size / 2, top);
+                context.bezierCurveTo(-size / 2, (size + top) / 2, 0, (size + top) / 1.15, 0, size);
+                context.bezierCurveTo(0, (size + top) / 1.15, size / 2, (size + top) / 2, size / 2, top);
+                context.bezierCurveTo(size / 2, 0, 0, 0, 0, top);
+                context.closePath();
+                context.fill();
+            }
+
+            function drawPetal(context, size) {
+                context.beginPath();
+                context.moveTo(0, -size * 0.55);
+                context.bezierCurveTo(size * 0.65, -size * 0.3, size * 0.5, size * 0.45, 0, size * 0.58);
+                context.bezierCurveTo(-size * 0.5, size * 0.45, -size * 0.65, -size * 0.3, 0, -size * 0.55);
+                context.closePath();
+                context.fill();
+            }
+
+            function spawnHeartBurst(x, y, count) {
+                const colors = ['#be185d', '#db2777', '#ec4899', '#f472b6', '#f9a8d4', '#fb7185'];
+                for (let i = 0; i < count; i++) {
+                    const angle = (Math.PI * 2 * i) / count + (Math.random() - 0.5) * 0.48;
+                    const speed = 2.0 + Math.random() * 4.8;
+                    effectParticles.push({
+                        kind: 'burst',
+                        x,
+                        y,
+                        vx: Math.cos(angle) * speed,
+                        vy: Math.sin(angle) * speed - 1.9,
+                        gravity: 0.082,
+                        size: 8 + Math.random() * 9.5,
+                        rot: Math.random() * Math.PI * 2,
+                        rotSpeed: (Math.random() - 0.5) * 0.11,
+                        alpha: 1,
+                        decay: 0.012 + Math.random() * 0.01,
+                        color: colors[Math.floor(Math.random() * colors.length)]
+                    });
+                }
+            }
+
+            /**
+             * HÀM DÙNG CHUNG GỬI CÁI ÔM 2 CHIỀU TRÊN BẢN ĐỒ: sendHug(direction, options)
+             * - direction: 'hn2nice' (Hà Nội -> Nice: t chạy từ 1 về 0)
+             *           hoặc 'nice2hn' (Nice -> Hà Nội: t chạy từ 0 lên 1)
+             */
+            function sendHug(direction, options = {}) {
+                const dir = direction === 'hn2nice' ? 'hn2nice' : 'nice2hn';
+                const { originX, originY, fadeCard = true } = options;
+
+                // Bắn pháo tim vui mắt tại vị trí nút vừa bấm (nếu có)
+                if (typeof originX === 'number' && typeof originY === 'number') {
+                    spawnHeartBurst(originX, originY, 18);
+                }
+
+                // Tạm làm mờ nhẹ thẻ thư trong ~2.45 giây để nhìn rõ trái tim bay vượt 9.480 km trên bản đồ
+                if (fadeCard && !isMapInspecting) {
+                    document.body.classList.add('hug-watching-mode');
+                    clearTimeout(hugWatchTimer);
+                    hugWatchTimer = setTimeout(() => {
+                        document.body.classList.remove('hug-watching-mode');
+                    }, 2450);
+                }
+
+                // Thông báo ngọt ngào lúc xuất phát
+                if (dir === 'hn2nice') {
+                    showToast('Một cái ôm ấm áp từ Hà Nội đang bay 9.480 km sang Nice cho Quỳnh Thư 💗');
+                } else {
+                    showToast('Một cái ôm ngọt ngào từ Nice đang bay 9.480 km về Hà Nội cho Hải Long 💗');
+                }
+
+                if (!routeGeom) return;
+
+                const now = performance.now();
+                const heartColors = ['#be185d', '#db2777', '#ec4899', '#f472b6', '#fb7185'];
+                const sparkleColors = ['#ffffff', '#fbcfe8', '#f9a8d4', '#fda4af'];
+
+                // 1. Tạo chuỗi 26 trái tim phát sáng bay nối đuôi theo đúng chiều
+                for (let i = 0; i < 26; i++) {
+                    effectParticles.push({
+                        kind: 'routeHeart',
+                        dir,
+                        startTime: now + i * 48,
+                        duration: 1400 + Math.random() * 280,
+                        offsetX: (Math.random() - 0.5) * 20,
+                        offsetY: (Math.random() - 0.5) * 20,
+                        size: 11 + Math.random() * 9,
+                        color: heartColors[Math.floor(Math.random() * heartColors.length)]
+                    });
+                }
+
+                // 2. Tạo vệt sáng lấp lánh (sparkle trail) chạy bám theo đường bay
+                for (let j = 0; j < 34; j++) {
+                    effectParticles.push({
+                        kind: 'routeSparkle',
+                        dir,
+                        startTime: now + j * 36,
+                        duration: 1320 + Math.random() * 260,
+                        offsetX: (Math.random() - 0.5) * 26,
+                        offsetY: (Math.random() - 0.5) * 26,
+                        radius: 2 + Math.random() * 2.8,
+                        color: sparkleColors[Math.floor(Math.random() * sparkleColors.length)]
+                    });
+                }
+
+                // 3. Khi chuỗi trái tim hạ cánh tại đích -> bật ripple SVG + nhịp ghim + pháo tim rực rỡ
+                const targetSvgX = dir === 'hn2nice' ? routeGeom.nx : routeGeom.hx;
+                const targetSvgY = dir === 'hn2nice' ? routeGeom.ny : routeGeom.hy;
+                const targetPinId = dir === 'hn2nice' ? 'mapNicePin' : 'mapHanoiPin';
+
+                setTimeout(() => {
+                    spawnSvgImpactRipple(targetSvgX, targetSvgY);
+
+                    const pinEl = document.getElementById(targetPinId);
+                    if (pinEl) {
+                        pinEl.classList.remove('pin-celebrate');
+                        void pinEl.offsetWidth;
+                        pinEl.classList.add('pin-celebrate');
+                    }
+
+                    const screenTarget = svgPointToScreen(targetSvgX, targetSvgY);
+                    spawnHeartBurst(screenTarget.x, screenTarget.y, 28);
+
+                    if (dir === 'hn2nice') {
+                        showToast('Cái ôm từ Hà Nội đã hạ cánh tới Nice cho Lưu Quỳnh Thư rồi nè! 🥰');
+                    } else {
+                        showToast('Cái ôm từ Nice vừa hạ cánh xuống Hà Nội cho Lại Trần Hải Long rồi nè! 🥰');
+                    }
+                }, 1450);
+            }
+
+            function renderCanvasLoop(now) {
+                ctx.clearRect(0, 0, cw, ch);
+
+                // Vẽ cánh hoa / tim nhỏ rơi nền
+                for (let i = 0; i < ambientPetals.length; i++) {
+                    const p = ambientPetals[i];
+                    p.tick += 1;
+                    p.y += p.vy;
+                    p.x += p.vx + Math.sin(p.tick * p.swaySpeed) * p.sway;
+                    p.angle += p.spin;
+
+                    if (p.y > ch + 20) ambientPetals[i] = createPetal(false);
+                    if (p.x < -20) p.x = cw + 12;
+                    if (p.x > cw + 20) p.x = -12;
+
+                    ctx.save();
+                    ctx.translate(p.x, p.y);
+                    ctx.rotate(p.angle);
+                    ctx.globalAlpha = p.alpha;
+                    ctx.fillStyle = p.color;
+                    if (p.isHeart) drawHeart(ctx, p.size);
+                    else drawPetal(ctx, p.size);
+                    ctx.restore();
+                }
+
+                // Vẽ hạt hiệu ứng pháo tim & trái tim bay dọc tuyến bản đồ 2 chiều
+                for (let i = effectParticles.length - 1; i >= 0; i--) {
+                    const pt = effectParticles[i];
+
+                    if (pt.kind === 'burst') {
+                        pt.x += pt.vx;
+                        pt.y += pt.vy;
+                        pt.vy += pt.gravity;
+                        pt.vx *= 0.985;
+                        pt.rot += pt.rotSpeed;
+                        pt.alpha -= pt.decay;
+
+                        if (pt.alpha <= 0) {
+                            effectParticles.splice(i, 1);
+                            continue;
+                        }
+
+                        ctx.save();
+                        ctx.translate(pt.x, pt.y);
+                        ctx.rotate(pt.rot);
+                        ctx.globalAlpha = Math.max(0, pt.alpha);
+                        ctx.fillStyle = pt.color;
+                        drawHeart(ctx, pt.size);
+                        ctx.restore();
+                    } else if (pt.kind === 'routeHeart' || pt.kind === 'routeSparkle') {
+                        if (now < pt.startTime) continue;
+                        const progress = Math.min((now - pt.startTime) / pt.duration, 1);
+                        if (progress >= 1) {
+                            effectParticles.splice(i, 1);
+                            continue;
+                        }
+
+                        const eased = progress < 0.5
+                            ? 2 * progress * progress
+                            : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+
+                        // Nice -> Hà Nội: t đi từ 0 -> 1 | Hà Nội -> Nice: t đi từ 1 -> 0
+                        const t = pt.dir === 'hn2nice' ? (1 - eased) : eased;
+                        const svgPt = sampleRoutePointSvg(t);
+                        const screenPt = svgPointToScreen(svgPt.x, svgPt.y);
+
+                        const wobble = Math.sin(progress * Math.PI);
+                        const drawX = screenPt.x + pt.offsetX * wobble;
+                        const drawY = screenPt.y + pt.offsetY * wobble;
+                        const alpha = progress < 0.12
+                            ? progress / 0.12
+                            : (progress > 0.86 ? (1 - progress) / 0.14 : 1);
+
+                        ctx.save();
+                        ctx.translate(drawX, drawY);
+                        ctx.globalAlpha = Math.max(0, alpha);
+
+                        if (pt.kind === 'routeHeart') {
+                            ctx.rotate(Math.sin(progress * 9) * 0.24);
+                            ctx.shadowColor = 'rgba(236, 72, 153, 0.82)';
+                            ctx.shadowBlur = 13;
+                            ctx.fillStyle = pt.color;
+                            drawHeart(ctx, pt.size * (0.8 + 0.36 * wobble));
+                        } else {
+                            ctx.shadowColor = 'rgba(255, 255, 255, 0.95)';
+                            ctx.shadowBlur = 8;
+                            ctx.fillStyle = pt.color;
+                            ctx.beginPath();
+                            ctx.arc(0, 0, pt.radius * (0.7 + 0.5 * wobble), 0, Math.PI * 2);
+                            ctx.fill();
+                        }
+                        ctx.restore();
+                    }
+                }
+
+                requestAnimationFrame(renderCanvasLoop);
+            }
+
+            // =========================================================================
+            // 4. ĐỒNG HỒ CẬP NHẬT TỪNG GIÂY (HÀ NỘI & NICE) + CHẾ ĐỘ NGẮM BẢN ĐỒ
+            // =========================================================================
+            function updateLiveClocks() {
+                const now = new Date();
+                try {
+                    const hnFmt = new Intl.DateTimeFormat('vi-VN', {
+                        timeZone: 'Asia/Ho_Chi_Minh',
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        second: '2-digit',
+                        hour12: false
+                    });
+                    const niceFmt = new Intl.DateTimeFormat('vi-VN', {
+                        timeZone: 'Europe/Paris',
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        second: '2-digit',
+                        hour12: false
+                    });
+                    document.getElementById('clockHanoi').textContent = hnFmt.format(now);
+                    document.getElementById('clockNice').textContent = niceFmt.format(now);
+                } catch (err) {
+                    const utc = now.getTime() + now.getTimezoneOffset() * 60000;
+                    const hn = new Date(utc + 7 * 3600000);
+                    const nc = new Date(utc + 1 * 3600000);
+                    const pad = (n) => String(n).padStart(2, '0');
+                    document.getElementById('clockHanoi').textContent = `${pad(hn.getHours())}:${pad(hn.getMinutes())}:${pad(hn.getSeconds())}`;
+                    document.getElementById('clockNice').textContent = `${pad(nc.getHours())}:${pad(nc.getMinutes())}:${pad(nc.getSeconds())}`;
+                }
+            }
+
+            let isMapInspecting = false;
+            const toggleMapInspectBtn = document.getElementById('toggleMapInspectBtn');
+            const toggleMapIcon = document.getElementById('toggleMapIcon');
+            const toggleMapText = document.getElementById('toggleMapText');
+            const mapInspectDock = document.getElementById('mapInspectDock');
+
+            function setMapInspectMode(enabled) {
+                isMapInspecting = enabled;
+                if (enabled) {
+                    document.body.classList.add('map-inspect-mode');
+                    toggleMapIcon.textContent = '💌';
+                    toggleMapText.textContent = 'Quay lại thư';
+                    mapInspectDock.classList.remove('hidden');
+                } else {
+                    document.body.classList.remove('map-inspect-mode');
+                    toggleMapIcon.textContent = '🗺️';
+                    toggleMapText.textContent = 'Ngắm bản đồ';
+                    mapInspectDock.classList.add('hidden');
+                }
+            }
+
+            // =========================================================================
+            // 5. TOAST, CLIPBOARD, MÃ HÓA UTF-8 BASE64 URL-SAFE & TRẠNG THÁI 2 CHIỀU
+            // =========================================================================
+            const DRAFT_PREFIX = 'hl_qt_2way_draft_v3_';
+            let currentComposeDir = 'hn2nice';
+            let pendingReplyTo = '';
+            let activeReaderLetter = null;
+            let lastGeneratedLetter = null;
+            let readerHugCount = 0;
+
+            const writerSection = document.getElementById('writerSection');
+            const readerSection = document.getElementById('readerSection');
+            const sealedEnvelopeView = document.getElementById('sealedEnvelopeView');
+            const openedLetterView = document.getElementById('openedLetterView');
+            const interactiveEnvelope = document.getElementById('interactiveEnvelope');
+
+            const dirBtnHn2Nice = document.getElementById('dirBtnHn2Nice');
+            const dirBtnNice2Hn = document.getElementById('dirBtnNice2Hn');
+
+            const letterTitleInput = document.getElementById('letterTitleInput');
+            const letterBodyInput = document.getElementById('letterBodyInput');
+            const letterPsInput = document.getElementById('letterPsInput');
+            const wordCountLabel = document.getElementById('wordCountLabel');
+
+            const replyContextBadge = document.getElementById('replyContextBadge');
+            const replyContextTitle = document.getElementById('replyContextTitle');
+
+            const shareResultPanel = document.getElementById('shareResultPanel');
+            const shareUrlOutput = document.getElementById('shareUrlOutput');
+            const shareBoxTitle = document.getElementById('shareBoxTitle');
+            const copiedStatusBadge = document.getElementById('copiedStatusBadge');
+            const shareHintText = document.getElementById('shareHintText');
+            const localDeployNote = document.getElementById('localDeployNote');
+
+            const backFromEnvelopeBtn = document.getElementById('backFromEnvelopeBtn');
+            const previewControlsBar = document.getElementById('previewControlsBar');
+            const hugCounterText = document.getElementById('hugCounterText');
+
+            function showToast(message) {
+                const stack = document.getElementById('toastStack');
+                // Giới hạn tối đa 2 toast cùng lúc để không che màn hình
+                while (stack.children.length >= 2) {
+                    stack.firstElementChild.remove();
+                }
+                const el = document.createElement('div');
+                el.className = 'toast-item';
+                el.textContent = message;
+                stack.appendChild(el);
+
+                requestAnimationFrame(() => el.classList.add('show'));
+                setTimeout(() => {
+                    el.classList.remove('show');
+                    setTimeout(() => el.remove(), 320);
+                }, 3100);
+            }
+
+            /**
+             * Sao chép vào clipboard bằng execCommand (tương thích tốt iFrame & mobile) kèm fallback
+             */
+            function copyTextSafely(text) {
+                return new Promise((resolve) => {
+                    let ok = false;
+                    try {
+                        const ta = document.createElement('textarea');
+                        ta.value = text;
+                        ta.setAttribute('readonly', '');
+                        ta.style.position = 'fixed';
+                        ta.style.top = '-9999px';
+                        ta.style.left = '-9999px';
+                        document.body.appendChild(ta);
+                        ta.focus();
+                        ta.select();
+                        ta.setSelectionRange(0, ta.value.length);
+                        ok = document.execCommand('copy');
+                        document.body.removeChild(ta);
+                    } catch (err) {
+                        ok = false;
+                    }
+
+                    if (ok) {
+                        resolve(true);
+                        return;
+                    }
+                    if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+                        navigator.clipboard.writeText(text).then(() => resolve(true)).catch(() => resolve(false));
+                    } else {
+                        resolve(false);
+                    }
+                });
+            }
+
+            function formatLetterDate(dirCode) {
+                const meta = getDirMeta(dirCode);
+                const now = new Date();
+                return `${meta.senderCity}, ngày ${now.getDate()} tháng ${now.getMonth() + 1} năm ${now.getFullYear()}`;
+            }
+
+            function encodeLetterToToken(letterObj) {
+                const payload = {
+                    dir: letterObj.dir === 'nice2hn' ? 'nice2hn' : 'hn2nice',
+                    t: letterObj.title || '',
+                    b: letterObj.body || '',
+                    p: letterObj.ps || '',
+                    d: letterObj.date || formatLetterDate(letterObj.dir)
+                };
+                if (letterObj.replyTo) {
+                    payload.r = letterObj.replyTo;
+                }
+                const bytes = new TextEncoder().encode(JSON.stringify(payload));
+                let binary = '';
+                for (let i = 0; i < bytes.length; i++) {
+                    binary += String.fromCharCode(bytes[i]);
+                }
+                return btoa(binary).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+            }
+
+            function decodeTokenToLetter(token) {
+                if (!token || typeof token !== 'string') return null;
+                try {
+                    let b64 = token.trim().replace(/-/g, '+').replace(/_/g, '/');
+                    while (b64.length % 4 !== 0) b64 += '=';
+                    const binary = atob(b64);
+                    const bytes = new Uint8Array(binary.length);
+                    for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+                    const parsed = JSON.parse(new TextDecoder('utf-8').decode(bytes));
+                    if (!parsed || (typeof parsed.b !== 'string' && typeof parsed.t !== 'string')) return null;
+
+                    const dir = parsed.dir === 'nice2hn' ? 'nice2hn' : 'hn2nice';
+                    const meta = getDirMeta(dir);
+                    return {
+                        dir,
+                        title: (parsed.t || '').trim() || meta.defaultTitle,
+                        body: parsed.b || '',
+                        ps: (parsed.p || '').trim(),
+                        date: (parsed.d || '').trim() || formatLetterDate(dir),
+                        replyTo: (parsed.r || '').trim()
+                    };
+                } catch (err) {
+                    console.warn('Không thể giải mã nội dung thư:', err);
+                    return null;
+                }
+            }
+
+            function getTokenFromUrl() {
+                try {
+                    const hash = window.location.hash || '';
+                    if (hash.length > 1) {
+                        const hp = new URLSearchParams(hash.slice(1));
+                        if (hp.get('thu')) return hp.get('thu');
+                    }
+                    const qp = new URLSearchParams(window.location.search || '');
+                    if (qp.get('thu')) return qp.get('thu');
+                } catch (err) {
+                    console.warn('Lỗi đọc URL:', err);
+                }
+                return null;
+            }
+
+            /**
+             * Tạo đường dẫn chia sẻ dựa trên window.location.origin + window.location.pathname
+             * (hỗ trợ an toàn khi chạy cả trên web thật lẫn file nội bộ / sandbox)
+             */
+            function buildShareUrl(token) {
+                const origin = window.location.origin;
+                const pathname = window.location.pathname || '';
+                let base;
+                if (origin && origin !== 'null' && !origin.startsWith('file:')) {
+                    base = origin + pathname;
+                } else {
+                    base = window.location.href.split('#')[0].split('?')[0];
+                }
+                return `${base}#thu=${token}`;
+            }
+
+            function isLocalOrSandboxEnv() {
+                const proto = window.location.protocol || '';
+                const href = window.location.href || '';
+                return proto === 'file:' || proto === 'about:' || proto === 'blob:' || href.includes('srcdoc');
+            }
+
+            // =========================================================================
+            // 6. QUẢN LÝ BẢN NHÁP RIÊNG TỪNG CHIỀU & CẬP NHẬT GIAO DIỆN COMPOSER
+            // =========================================================================
+            function updateWordCount() {
+                const txt = letterBodyInput.value.trim();
+                const words = txt ? txt.split(/\s+/).filter(Boolean).length : 0;
+                wordCountLabel.textContent = `${words} từ`;
+            }
+
+            function saveDraftForDir(dirCode) {
+                try {
+                    localStorage.setItem(DRAFT_PREFIX + dirCode, JSON.stringify({
+                        title: letterTitleInput.value,
+                        body: letterBodyInput.value,
+                        ps: letterPsInput.value
+                    }));
+                } catch (e) { /* Bỏ qua nếu trình duyệt chặn storage */ }
+            }
+
+            function loadDraftForDir(dirCode) {
+                try {
+                    const raw = localStorage.getItem(DRAFT_PREFIX + dirCode);
+                    if (!raw) {
+                        letterTitleInput.value = '';
+                        letterBodyInput.value = '';
+                        letterPsInput.value = '';
+                    } else {
+                        const d = JSON.parse(raw);
+                        letterTitleInput.value = typeof d.title === 'string' ? d.title : '';
+                        letterBodyInput.value = typeof d.body === 'string' ? d.body : '';
+                        letterPsInput.value = typeof d.ps === 'string' ? d.ps : '';
+                    }
+                } catch (e) {
+                    letterTitleInput.value = '';
+                    letterBodyInput.value = '';
+                    letterPsInput.value = '';
+                }
+                updateWordCount();
+            }
+
+            function renderReplyContextUI() {
+                if (pendingReplyTo) {
+                    replyContextTitle.textContent = pendingReplyTo;
+                    replyContextBadge.classList.remove('hidden');
+                } else {
+                    replyContextTitle.textContent = '';
+                    replyContextBadge.classList.add('hidden');
+                }
+            }
+
+            /**
+             * Chuyển đổi chiều gửi thư & tự động cập nhật toàn bộ nhãn, gợi ý, chữ ký và bản nháp
+             */
+            function setComposeDirection(dirCode, options = {}) {
+                const { savePrevious = true, keepReplyContext = false } = options;
+                const nextDir = dirCode === 'nice2hn' ? 'nice2hn' : 'hn2nice';
+
+                if (savePrevious && currentComposeDir !== nextDir) {
+                    saveDraftForDir(currentComposeDir);
+                }
+
+                currentComposeDir = nextDir;
+                const meta = getDirMeta(nextDir);
+
+                // Cập nhật trạng thái nút Segmented Toggle
+                const isHn2Nice = nextDir === 'hn2nice';
+                dirBtnHn2Nice.classList.toggle('active', isHn2Nice);
+                dirBtnHn2Nice.setAttribute('aria-selected', String(isHn2Nice));
+                dirBtnNice2Hn.classList.toggle('active', !isHn2Nice);
+                dirBtnNice2Hn.setAttribute('aria-selected', String(!isHn2Nice));
+
+                // Cập nhật tiêu đề, mô tả, placeholder & chữ ký
+                document.getElementById('composerHeading').textContent = meta.composerHeading;
+                document.getElementById('composerSubtitle').textContent = meta.composerSubtitle;
+                letterTitleInput.placeholder = meta.titlePlaceholder;
+                letterBodyInput.placeholder = meta.bodyPlaceholder;
+                letterPsInput.placeholder = meta.psPlaceholder;
+                document.getElementById('composerSignPreview').textContent = `Ký tên: ${meta.senderName} (${meta.senderCity})`;
+                document.getElementById('generateLinkBtnText').textContent = meta.generateBtnLabel;
+
+                if (!keepReplyContext) {
+                    pendingReplyTo = '';
+                    renderReplyContextUI();
+                }
+
+                shareResultPanel.classList.add('hidden');
+                loadDraftForDir(nextDir);
+            }
+
+            function collectLetterFromForm() {
+                const meta = getDirMeta(currentComposeDir);
+                const title = letterTitleInput.value.trim();
+                const body = letterBodyInput.value.trim();
+                const ps = letterPsInput.value.trim();
+
+                if (!title && !body) {
+                    showToast(`Viết vài dòng yêu thương cho ${meta.receiverShort} trước đã nha 💌`);
+                    letterBodyInput.focus();
+                    return null;
+                }
+
+                return {
+                    dir: currentComposeDir,
+                    title: title || meta.defaultTitle,
+                    body: body || meta.defaultBody,
+                    ps,
+                    date: formatLetterDate(currentComposeDir),
+                    replyTo: pendingReplyTo
+                };
+            }
+
+            // =========================================================================
+            // 7. CHUYỂN ĐỔI GIỮA CHẾ ĐỘ SOẠN THƯ & CHẾ ĐỘ ĐỌC PHONG BÌ 3D
+            // =========================================================================
+            function showWriterMode() {
+                setMapInspectMode(false);
+                document.body.classList.remove('hug-watching-mode');
+                writerSection.classList.remove('hidden');
+                readerSection.classList.add('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            function showReaderMode(letterData, modeType) {
+                setMapInspectMode(false);
+                document.body.classList.remove('hug-watching-mode');
+                activeReaderLetter = letterData;
+                readerHugCount = 0;
+
+                const meta = getDirMeta(letterData.dir);
+
+                // Cập nhật mặt ngoài phong bì 3D theo chiều gửi
+                document.getElementById('envelopeFlightBanner').textContent = meta.envelopeBanner;
+                document.getElementById('envelopePeekTitle').textContent = letterData.title;
+                document.getElementById('envelopePeekRoute').textContent = meta.readerRoutePill;
+                document.getElementById('envelopeRouteLine').textContent = meta.envelopeRouteLine;
+                document.getElementById('envelopePeopleLine').innerHTML =
+                    `<strong>${meta.senderName}</strong> gửi <strong>${meta.receiverName}</strong>`;
+                document.getElementById('waxSealText').textContent = meta.waxSeal;
+
+                // Cập nhật nội dung lá thư bên trong
+                document.getElementById('readerDateText').textContent = letterData.date;
+                document.getElementById('readerRoutePill').textContent = meta.readerRoutePill;
+
+                const replyPill = document.getElementById('readerReplyPill');
+                if (letterData.replyTo) {
+                    document.getElementById('readerReplyTitle').textContent = letterData.replyTo;
+                    replyPill.classList.remove('hidden');
+                } else {
+                    replyPill.classList.add('hidden');
+                }
+
+                document.getElementById('readerTitleText').textContent = letterData.title;
+                document.getElementById('readerBodyText').textContent = letterData.body;
+
+                const psWrap = document.getElementById('readerPsContainer');
+                if (letterData.ps) {
+                    document.getElementById('readerPsText').textContent = letterData.ps;
+                    psWrap.classList.remove('hidden');
+                } else {
+                    psWrap.classList.add('hidden');
+                }
+
+                document.getElementById('readerSignClosing').textContent = meta.closingLine;
+                document.getElementById('readerSignName').textContent = meta.senderName;
+                document.getElementById('readerSignPlace').textContent = meta.senderPlaceStamp;
+
+                // Cập nhật nút Gửi cái ôm & Viết thư hồi âm theo đúng chiều phản hồi
+                document.getElementById('readerSendHugText').textContent = meta.replyHugBtnText;
+                document.getElementById('writeReplyLetterText').textContent = meta.replyLetterBtnText;
+                hugCounterText.classList.add('hidden');
+
+                // Đặt lại trạng thái phong bì kín
+                interactiveEnvelope.classList.remove('envelope-opening');
+                interactiveEnvelope.classList.add('animate-float-envelope');
+                sealedEnvelopeView.classList.remove('hidden');
+                openedLetterView.classList.add('hidden');
+
+                if (modeType === 'preview') {
+                    backFromEnvelopeBtn.classList.remove('hidden');
+                    previewControlsBar.classList.remove('hidden');
+                } else {
+                    backFromEnvelopeBtn.classList.add('hidden');
+                    previewControlsBar.classList.add('hidden');
+                }
+
+                writerSection.classList.add('hidden');
+                readerSection.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            let isOpeningEnvelope = false;
+            function openEnvelope3D() {
+                if (isOpeningEnvelope) return;
+                isOpeningEnvelope = true;
+
+                interactiveEnvelope.classList.remove('animate-float-envelope');
+                interactiveEnvelope.classList.add('envelope-opening');
+
+                const rect = interactiveEnvelope.getBoundingClientRect();
+                spawnHeartBurst(rect.left + rect.width / 2, rect.top + rect.height * 0.44, 34);
+
+                setTimeout(() => {
+                    sealedEnvelopeView.classList.add('hidden');
+                    openedLetterView.classList.remove('hidden');
+                    isOpeningEnvelope = false;
+                }, 900);
+            }
+
+            async function createAndCopyLink(letterData, showPanel = true) {
+                lastGeneratedLetter = letterData;
+                const meta = getDirMeta(letterData.dir);
+                const token = encodeLetterToToken(letterData);
+                const fullUrl = buildShareUrl(token);
+
+                if (showPanel) {
+                    shareBoxTitle.innerHTML = `<span>🎀</span><span>Link phong thư gửi ${meta.receiverName} đã sẵn sàng!</span>`;
+                    shareUrlOutput.value = fullUrl;
+                    shareHintText.innerHTML = `💬 Dán đường link này vào <strong>Messenger</strong> hoặc <strong>Zalo</strong> gửi cho <strong>${meta.receiverShort}</strong> — mở ra là thấy ngay phong bì hồng niêm phong dấu sáp <strong>${meta.waxSeal}</strong>, đọc xong còn viết thư hồi âm và gửi cái ôm ngược lại được luôn!`;
+
+                    if (isLocalOrSandboxEnv()) {
+                        localDeployNote.classList.remove('hidden');
+                    } else {
+                        localDeployNote.classList.add('hidden');
+                    }
+                    shareResultPanel.classList.remove('hidden');
+                }
+
+                const copied = await copyTextSafely(fullUrl);
+                if (showPanel) {
+                    copiedStatusBadge.textContent = copied ? 'Đã sao chép ✓' : 'Bấm Sao chép link bên dưới';
+                }
+                showToast(copied
+                    ? `Đã tạo & sao chép link gửi ${meta.receiverShort} rồi nè! 💌`
+                    : `Link gửi ${meta.receiverShort} đã sẵn sàng — bấm Sao chép link nhé 💕`);
+            }
+
+            // =========================================================================
+            // 8. GẮN TOÀN BỘ SỰ KIỆN TƯƠNG TÁC
+            // =========================================================================
+            // Chuyển đổi chiều gửi thư
+            dirBtnHn2Nice.addEventListener('click', () => setComposeDirection('hn2nice'));
+            dirBtnNice2Hn.addEventListener('click', () => setComposeDirection('nice2hn'));
+
+            // Lưu nháp tự động theo chiều đang soạn
+            [letterTitleInput, letterBodyInput, letterPsInput].forEach((inputEl) => {
+                inputEl.addEventListener('input', () => {
+                    updateWordCount();
+                    saveDraftForDir(currentComposeDir);
+                });
+            });
+
+            document.getElementById('clearReplyContextBtn').addEventListener('click', () => {
+                pendingReplyTo = '';
+                renderReplyContextUI();
+            });
+
+            document.getElementById('clearDraftBtn').addEventListener('click', () => {
+                letterTitleInput.value = '';
+                letterBodyInput.value = '';
+                letterPsInput.value = '';
+                shareResultPanel.classList.add('hidden');
+                updateWordCount();
+                saveDraftForDir(currentComposeDir);
+                showToast('Đã làm mới tờ giấy thư ✨');
+            });
+
+            // Xem trước phong thư
+            document.getElementById('previewLetterBtn').addEventListener('click', () => {
+                const letter = collectLetterFromForm();
+                if (!letter) return;
+                showReaderMode(letter, 'preview');
+            });
+
+            // Tạo link gửi thư
+            document.getElementById('letterForm').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const letter = collectLetterFromForm();
+                if (!letter) return;
+                await createAndCopyLink(letter, true);
+            });
+
+            // Sao chép lại link
+            document.getElementById('copyLinkAgainBtn').addEventListener('click', async () => {
+                const url = shareUrlOutput.value;
+                if (!url) return;
+                const ok = await copyTextSafely(url);
+                copiedStatusBadge.textContent = ok ? 'Đã sao chép ✓' : 'Chọn link & nhấn Ctrl+C';
+                showToast(ok ? 'Đã sao chép lại link thành công! 💖' : 'Hãy chọn link và nhấn Ctrl+C nhé');
+            });
+
+            // Mở thử link ngay
+            document.getElementById('openGeneratedLinkBtn').addEventListener('click', () => {
+                if (!lastGeneratedLetter) return;
+                showReaderMode(lastGeneratedLetter, 'shared');
+            });
+
+            // Mở phong bì 3D
+            interactiveEnvelope.addEventListener('click', openEnvelope3D);
+            interactiveEnvelope.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    openEnvelope3D();
+                }
+            });
+            document.getElementById('openEnvelopePromptBtn').addEventListener('click', openEnvelope3D);
+
+            // Quay lại chỉnh sửa từ chế độ Xem trước
+            backFromEnvelopeBtn.addEventListener('click', showWriterMode);
+            document.getElementById('backToEditBtn').addEventListener('click', showWriterMode);
+            document.getElementById('copyFromPreviewBtn').addEventListener('click', async () => {
+                if (!activeReaderLetter) return;
+                await createAndCopyLink(activeReaderLetter, false);
+            });
+
+            // Nút Gửi cái ôm phản hồi trong lá thư
+            document.getElementById('readerSendHugBtn').addEventListener('click', (e) => {
+                if (!activeReaderLetter) return;
+                const meta = getDirMeta(activeReaderLetter.dir);
+                const hugDir = meta.replyHugDir;
+                readerHugCount += 1;
+
+                const rect = e.currentTarget.getBoundingClientRect();
+                sendHug(hugDir, {
+                    originX: rect.left + rect.width / 2,
+                    originY: rect.top + rect.height / 2,
+                    fadeCard: true
+                });
+
+                const routeLabel = hugDir === 'hn2nice'
+                    ? 'từ Hà Nội sang Nice cho Quỳnh Thư'
+                    : 'từ Nice về Hà Nội cho Hải Long';
+                hugCounterText.textContent = readerHugCount === 1
+                    ? `Đã gửi 1 cái ôm ấm áp bay ${routeLabel} 💕`
+                    : `Đã gửi ${readerHugCount} cái ôm ấm áp bay ${routeLabel} 💗`;
+                hugCounterText.classList.remove('hidden');
+            });
+
+            // Nút "Xem cái ôm bay trên bản đồ" ngay trong lá thư
+            document.getElementById('watchHugOnMapBtn').addEventListener('click', () => {
+                if (!activeReaderLetter) return;
+                const meta = getDirMeta(activeReaderLetter.dir);
+                setMapInspectMode(true);
+                setTimeout(() => {
+                    sendHug(meta.replyHugDir, { fadeCard: false });
+                }, 260);
+            });
+
+            // Nút "Viết thư hồi âm" -> đảo ngược chiều gửi tự động & gắn thẻ hồi âm bức thư vừa đọc
+            document.getElementById('writeReplyLetterBtn').addEventListener('click', () => {
+                if (!activeReaderLetter) return;
+                const meta = getDirMeta(activeReaderLetter.dir);
+                const replyDir = meta.opposite;
+
+                // Xóa hash cũ để tránh tải lại thư cũ khi reload
+                try {
+                    const cleanUrl = window.location.href.split('#')[0].split('?')[0];
+                    window.history.replaceState(null, '', cleanUrl);
+                } catch (err) {
+                    window.location.hash = '';
+                }
+
+                pendingReplyTo = activeReaderLetter.title;
+                setComposeDirection(replyDir, { savePrevious: false, keepReplyContext: true });
+                renderReplyContextUI();
+                showWriterMode();
+                letterTitleInput.focus();
+
+                const replyMeta = getDirMeta(replyDir);
+                showToast(`Đã chuyển sang chiều ${replyMeta.senderCity} → ${replyMeta.receiverCity} để viết hồi âm ✍️`);
+            });
+
+            // Nút Ngắm bản đồ & các nút gửi cái ôm trực tiếp 2 chiều
+            toggleMapInspectBtn.addEventListener('click', () => setMapInspectMode(!isMapInspecting));
+            document.getElementById('exitMapInspectBtn').addEventListener('click', () => setMapInspectMode(false));
+
+            function bindDirectHugButton(btnId, dir) {
+                const el = document.getElementById(btnId);
+                if (!el) return;
+                el.addEventListener('click', (e) => {
+                    const rect = e.currentTarget.getBoundingClientRect();
+                    sendHug(dir, {
+                        originX: rect.left + rect.width / 2,
+                        originY: rect.top + rect.height / 2,
+                        fadeCard: true
+                    });
+                });
+            }
+
+            bindDirectHugButton('quickHugHnToNice', 'hn2nice');
+            bindDirectHugButton('quickHugNiceToHn', 'nice2hn');
+            bindDirectHugButton('dockHugHnToNice', 'hn2nice');
+            bindDirectHugButton('dockHugNiceToHn', 'nice2hn');
+
+            // =========================================================================
+            // 9. ĐỊNH TUYẾN URL & KHỞI TẠO ỨNG DỤNG
+            // =========================================================================
+            function routeFromUrl() {
+                const token = getTokenFromUrl();
+                if (token) {
+                    const decoded = decodeTokenToLetter(token);
+                    if (decoded) {
+                        showReaderMode(decoded, 'shared');
+                        return;
+                    }
+                    showToast('Liên kết bức thư chưa đầy đủ, bạn hãy viết một lá thư mới nhé 💕');
+                }
+                setComposeDirection(currentComposeDir, { savePrevious: false, keepReplyContext: false });
+                showWriterMode();
+            }
+
+            window.addEventListener('hashchange', routeFromUrl);
+
+            window.addEventListener('load', () => {
+                buildWorldMapSvg();
+                updateResponsiveMapViewBox();
+
+                resizeCanvas();
+                initAmbientPetals();
+
+                requestAnimationFrame(animateMapTraveler);
+                requestAnimationFrame(renderCanvasLoop);
+
+                updateLiveClocks();
+                setInterval(updateLiveClocks, 1000);
+
+                routeFromUrl();
+            });
+
+            window.addEventListener('resize', () => {
+                updateResponsiveMapViewBox();
+                resizeCanvas();
+                initAmbientPetals();
+            });
+        })();
+    </script>
+</body>
+</html>
